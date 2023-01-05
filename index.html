@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>CPMA tfer</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="/imgs/favicon.svg" type="image/svg">
+
+  <link href="https://fonts.googleapis.com/css?family=Indie+Flower|Lobster" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/ba6e6370a1.js" crossorigin="anonymous"></script>
+
+  <!-- Load styles -->
+  <link href="style.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <div class="main">
+
+    <h1><span class="h1-line1">CPMA</span><br>transfer function</h1>
+
+    <div class="grid-container">
+      <article class="item1">
+        <h2>Overview</h2>
+        
+        <div>
+          This web app is designed to examine the transfer function of the CPMA.
+          The app uses data derived from tandem CPMA (TCPMA) measurements conducted by
+          <a href="#">Naseri et al. (2023)</a>.
+        <div>
+
+        <div class="photo">
+          <img src="/imgs/cpmaIcon.svg" style="width:100%;max-width:800px; max-height:500px;margin-top:10px;margin-bottom:10px;">
+        </div>
+
+        <div>
+          A triangular transfer function was used to approximate the CPMA transfer function and deviations
+           from the idealized triangular transfer function were determined by two factors:
+            (i) the width factor (μ), and (ii) the height factor (λ), such that a value of 1 for each
+             factor implied no deviation between the actual and theoretical triangular CPMA transfer functions.
+        </div>
+
+        <div class="photo">
+          <img src="/imgs/triangle_tfer.svg" style="width:100%;max-width:600px; max-height:500px;margin-top:10px">
+        <div class="photo">
+
+        <p>
+          The width factor higher than one (μ>1), indicating that the CPMA transfer function is narrower than
+          the idealized triangular transfer function.
+        </p>
+
+        <p>
+          These two factors are calculated from multivariate nonlinear functions fitted to TCMPA measurements
+          by indicating either CPMA mass set point (m<sub>p</sub>), CPMA resolution (R<sub>m</sub>),
+          and CPMA flow rate (Q) or CPMA rotational speed (ω) and voltage (V).
+          In case that the CPMA flow rate is set to 0.3, 1.5, 4 or 8 LPM, the loss factor is calculated directly
+          from fitting function derived for the corresponding CPMA flow rate, whereas for other flow rates,
+          the loss factor is obtained from simple interpolation between the closest lower and higher CPMA flow rates.
+        </p>
+      </article>
+
+      <article class="item2">
+        <h2>Inputs</h2>
+
+        <p>
+        <div class="control">
+          <div class="control-label"> mass set point (m<sub>p</sub>)
+            <span class="control-unit"> fg (=10<sup>-18</sup>kg)</span>
+          </div> <br>
+          <input class="textinput" id="Ntot_in" type="number" min="10" max="100000" value="3162.3"> <br>
+          <div class="control-unit">
+            operational range of m<sub>p</sub>:<br>...needs to be fixed...<br> (<div id="Ntot_in_down" style="display:inline;">-</div> to
+            <div id="Ntot_in_up" style="display:inline;">-</div>
+            #/cm<sup>3</sup>)
+          </div>
+        </div>
+
+        <div class="control">
+          <div class="control-label">Resolution (R<sub>m</sub>)</div> <br>
+          <input class="textinput" style="width:40%" id="time_in" type="number" min="0.01" max="10" value="1.2">
+          <!-- <select id="time_unit">
+            <option>mins</option>
+            <option selected="selected">hrs</option>
+          </select> -->
+          <div class="control-unit">
+            operational range of R<sub>m</sub> at this configuration:...needs to be fixed...
+
+          </div>
+        </div>
+
+        <div class="control" style="width:400px;">
+          <div class="control-label">flow rate (Q)
+            <span class="control-unit"> LPM </span>
+          </div> <br>
+          <select id="R12_in">
+            <option value="0.00,0.40">< 0.40</option>
+            <option value="0.40,0.55">0.40 - 0.55</option>
+            <option value="0.55,0.75" selected="selected">0.55 - 0.75</option>
+            <option value="0.75,0.90">0.75 - 0.90</option>
+            <option value="0.90,0.95">0.90 - 0.95</option>
+            <option value="0.95,0.98">0.95 - 0.98</option>
+            <option value="0.98,1.00">> 0.98</option>
+          </select>
+          <div class="control-unit">
+          (verified range of Q:  0.3-8 LPM)
+          </div>
+
+          <!-- Phantom width image. Replaced accordingly in script. -->
+          <!-- <div style="display:inline;">
+            <img src="imgs/0.png" id="distimg">
+          </div> -->
+
+          <p>
+          </p>
+          <h2> Adjustable factors</h2>
+<!-- 
+          The width  <div style="display:inline;" id="no_out"></div> simulations
+   -->
+          <p>
+          <div class="out">
+            <div class="control-label">Width factor (μ):</div> <br>
+            <div class="textoutput" id="Rm_out">-</div>
+          </div>
+<!--   
+          <div class="out">
+            <div class="control-label">No. of PMA setpoints per decade (n<sub>c</sub>')
+              <span class="control-unit">#</span>
+            </div> <br>
+            <div class="textoutput" id="nc_out">-</div>
+          </div> -->
+  
+          <!-- <div class="out">
+            <div class="control-label">No. of SP2 bins per decade (n<sub>s</sub>')
+              <span class="control-unit">#</span>
+            </div> <br>
+            <div class="textoutput" id="ns_out">-</div>
+          </div> -->
+          <br>
+          <div class="out" style="padding-right: 0px; padding-bottom: 10px; width: 200px;">
+            <div class="control-label">Height factor (λ):
+              
+            </div> <br>
+            <div class="textoutput"  >
+              <div style="display:inline-block">
+                <div id="Ns0_out" style="display:inline;">-</div>k</div>
+            </div>
+          </div>
+  
+          <br>
+  
+          <!-- <div class="out">
+            <div class="control-label">Actual time (t)
+              <span class="control-unit" id="time_out_unit">hrs</span>
+            </div> <br>
+            <div class="textoutput2" id="time_out"></div>
+          </div> -->
+<!--   
+          <div class="out">
+            <div class="control-label">Actual correlation (R<sub>12</sub>)
+              <span class="control-unit">[0,1]</span>
+            </div> <br>
+            <div class="textoutput2" id="R12_out">-</div>
+          </div> -->
+
+
+        </div>
+        </p>
+      </article>
+
+
+      <article class="item3">
+        <p>
+          ... plots and other graphical elements that contain:
+        </p>
+        
+        <p>
+          Cambusion ideal trnsfer function vs. Actual transfer function.
+        </p>
+        <p>
+          ???????? what else???
+        </p>
+
+      </article>
+    
+    </div>
+
+  </div>
+
+
+  <!-- Footer -->
+  <div class="footer">
+    <div class="main">
+      <div class="footer-sub">
+        <p>
+          Created by
+          <a href="mailto:arash@ualberta.ca">Arash Naseri</a>
+          at the University of Alberta. <br>
+          Open source code and data for this web app is available at 
+          <a href="" style="display:inline-block;">XXXXXXXXXXX</a>.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  
+
+  <!-- Read in data as a script -->
+  <script src="data.js"></script>
+  <script src="index.js"></script>
+
+</body>

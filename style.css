@@ -1,0 +1,212 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&family=Open+Sans:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: #FCFCFC;
+}
+
+body {
+  font-family: Roboto, Arial, sans-serif;
+  font-weight: 300;
+  font-size: 12pt;
+}
+
+div.main {
+  text-align: justify;
+  text-justify: inter-word;
+  margin: 0 auto;
+  max-width: 1500px;
+  width: 95%;
+}
+
+
+/* For gridding */
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-gap: 25px;
+  grid-auto-flow: dense;
+}
+article {
+  padding: 20px;
+  background-color: white;
+  border: 1px solid #DDD;
+  border-radius: 4px;
+  box-shadow: 1px 1px 4px #DDD;
+}
+
+.item1 {
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
+
+/* Single column display for narrow displays */
+@media (max-width: 750px) {
+  .grid-container {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+
+p {
+  text-align: left;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  margin: 0px;
+  text-align: justify;
+  text-justify: inter-word;
+  color: #041251;
+}
+
+a {
+  transition: 0.3s;
+  color: 041251;
+}
+
+a:hover {
+  color: #7a4b4e;
+}
+
+h1 {
+  font-size: 50pt;
+  line-height: 50pt;
+  font-family: Roboto, sans-serif;
+  font-weight: 900;
+  margin-top: 30px;
+  margin-bottom: 25pt;
+  color:#041251
+}
+
+.h1-line1 {
+  color: #8CE6CD;
+  font-size: 35pt;
+  line-height: 36pt;
+  font-weight: 400;
+}
+
+h2 {
+  font-size: 25pt;
+  font-family: Roboto;
+  font-weight: 300;
+  line-height: 40pt;
+  padding-bottom: 8pt;
+}
+
+.footer {
+  font-size: 11pt;
+  padding-bottom: 30px;
+}
+
+.footer-sub {
+  width: 100%;
+  max-width: 650px;
+  font-size: 10pt;
+}
+
+
+
+/* For control components */
+div.control {
+  padding: 0px 30px 5px 0px;
+  display: inline-block;
+  vertical-align: text-top;
+  margin-bottom: 5px;
+  width: 200px;
+}
+
+.control-label {
+  display: inline-block;
+  font-family: Roboto, sans-serif;
+  font-weight: 600;
+  color: #444;
+  font-size: 12pt;
+  line-height: 10pt;
+}
+
+.control-unit {
+  font-family: Roboto, sans-serif;
+  font-weight: 300;
+  color: #777;
+  font-size: 12pt;
+}
+
+.textinput {
+  font-family: Roboto, Arial, sans-serif;
+  font-size: 11pt;
+  font-weight: 300;
+  padding: 5px 10px 5px 10px;
+  border: 1.5px solid #CCC;
+  border-radius: 3pt;
+  background-color: white;
+  transition: all 0.3s ease 0s;
+  width: 80%;
+}
+
+.textinput:hover {
+  border: 1.5px solid #8CE6CD;
+  box-shadow: 0px 0px 4px #AAAAAA;
+}
+
+.textinput:focus {
+  border: 1.5px solid #8CE6CD;
+  box-shadow: 0px 0px 2px #AAAAAA;
+}
+
+select {
+  font-family: Roboto, Arial, sans-serif;
+  font-size: 11pt;
+  border-radius: 3pt;
+  font-weight: 300;
+  padding: 5px 10px 5px 10px;
+  border: 1.5px solid #CCC;
+  background-color: white;
+  transition: all 0.3s ease 0s;
+  width: 40%;
+  vertical-align: top;
+}
+
+select:hover {
+  border: 1.5px solid #8CE6CD;
+  box-shadow: 0px 0px 2px #AAAAAA;
+}
+
+option {
+  font-family: Roboto, Arial, sans-serif;
+  font-size: 11pt;
+  font-weight: 300;
+}
+
+div.out {
+  padding: 0px 30px 10px 0px;
+  display: inline-block;
+  vertical-align: text-top;
+  margin-bottom: 12px;
+  width: 120px;
+  color: #8CE6CD;
+  font-size: 24pt;
+  line-height: 24pt;
+}
+
+.textoutput2 {
+  color:#999999;
+}
+
+#distimg {
+  width: 20%;
+  border: 1.5px solid #CCC;
+  border-radius: 3pt;
+  margin-top: 3px;
+}
+.photo{
+  text-align: center;
+  display: inline-block;
+  margin-bottom:30px;
+  margin-top: 20px;
+}
