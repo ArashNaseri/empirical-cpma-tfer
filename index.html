@@ -13,9 +13,71 @@
 
   <!-- Load styles -->
   <link href="style.css" rel="stylesheet">
+  <!-- Load d3.js -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://d3js.org/d3.v4.js"></script>
+  <script src="https://unpkg.com/mathjs/lib/browser/math.js" type="text/javascript"></script>
+
+  <!-- Used for mathematical optimization -->
+  <script src="https://unpkg.com/optimization-js@latest/dist/optimization.js" type="text/javascript"></script>
+
+  <script src="js/tfer_pma.js"></script>
+  <meta name="theme-color" content="#121212">
+  <meta name="color-scheme" content="light dark" />
+
+
+
+  <script>
+
+    // Initialize light/dark mode.
+    const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
+    var dark = prefersDarkScheme.matches;
+
+    // Apply appropriate theme.
+    function toggleNight () {
+      // Swap CSS.
+      document.body.classList.toggle("dark-theme");
+
+      // Update background color
+      if (dark) {
+        document.querySelector(':root').style.setProperty('--background-color', '#242526');
+      } else {
+        document.querySelector(':root').style.setProperty('--background-color', '#FCFCFC');
+      }
+    };
+    </script>
 </head>
 
-<body>
+<body onload="if (dark) { toggleNight(); }">
+
+  <header id="header">
+    <a href="#h1" id="header-logo"><b>tfer-pma.</b></a>
+    <nav>
+      <ul class="nav-list">
+        <li><a href="https://www.tandfonline.com/doi/full/10.1080/02786826.2019.1680794" class="nav-link" id="data-link-a">
+            <div style="display:flex;vertical-align:middle;">
+              <span><i class="far fa-file-alt" style="font-size:14pt;"></i></span>
+              <span style="padding-left:4px;">Link to paper</span>
+            </div>
+        </a></li>
+        <li><a href="https://github.com/ArashNaseri" class="nav-link">
+          <div style="display:flex;vertical-align:middle;">
+            <img src="docs/imgs/GitHub-Mark-64px.png" id="gh-black" style="height:15pt;padding-right:5px;">
+            <img src="docs/imgs/GitHub-Mark-Light-64px.png" id="gh-white" style="height:15pt;padding-right:5px;">
+            <span>@Naseri</span>
+          </div>
+        </a></li>
+        <li>
+          <a class="nav-link" id="btn-toggle"><div style="display:flex;vertical-align:middle;">
+            <span><i class="fas fa-moon" id="moon" style="font-size:14pt;padding-right:2px;"></i></span>
+            <span><i class="fas fa-sun" id="sun" style="font-size:14pt;padding-right:2px;"></i></span>
+            <span></span>  <!-- placeholder for dark/light theme toggle -->
+          </div></a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
 
   <div class="main">
 
@@ -62,107 +124,68 @@
       </article>
 
       <article class="item2">
+        <p></p>
         <h2>Inputs</h2>
 
-        <p>
-        <div class="control">
-          <div class="control-label"> mass set point (m<sub>p</sub>)
-            <span class="control-unit"> fg (=10<sup>-18</sup>kg)</span>
+        <div class="control" style="width:300px;">
+          <div class="control-label"> Mass set point (m<sub>p</sub>)<span class="control-unit"> fg </span>
           </div> <br>
-          <input class="textinput" id="Ntot_in" type="number" min="10" max="100000" value="3162.3"> <br>
-          <div class="control-unit">
-            operational range of m<sub>p</sub>:<br>...needs to be fixed...<br> (<div id="Ntot_in_down" style="display:inline;">-</div> to
-            <div id="Ntot_in_up" style="display:inline;">-</div>
-            #/cm<sup>3</sup>)
-          </div>
+          <p></p>
+          <input class="textinput slide control-unit" id="m_star" type="number" min="0.05" max="100" value="1" onchange="update()" ><br>
+          <!-- m* = <span id="mRangeValue">1</span><span class="control-unit"> fg</span><br> -->
+          <span class="control-unit">  Valid over m* ∈ [0.05,100] fg</span>
+          <p></p>
+
+        </div><br>
+
+        <div class="control" style="width:300px;">
+          <div class="control-label">Resolution (R<sub>m</sub>)
+          </div> <br>
+          
+          <input style="width:100px control-unit" class="textinput slide" id="Rm" type="number" min="2" max="15"  step="0.1" value="3" onchange="update()"><br>  <!--"rmRangeValue.innerText=this.value"-->
+          <!-- Rm = <span id="rmRangeValue">3</span><br> -->
+          <span class="control-unit"> Valid over R<sub>m</sub> ∈ [2,15]</span>
+            <p></p>
+
+        </div> <br>
+
+
+
+
+        <div class="control" style="width:300px;">
+          <p></p>
+          <div class="control-label">flow rate (Q)<span class="control-unit"> LPM </span>
+          </div> <br>
+          <p></p>
+          <input class="textinput slide control-unit" type="number" style="width:100px" name="qSlider" id="qSlider" min="0.3" max="8" value="1.5" step="0.1" onchange="update()"><br> <!--"qRangeValue.innerText=this.value"-->
+          <!-- Q = <span id="qRangeValue">1.5</span> <span class="control-unit"> (LPM)</span><br> -->
+
+          <span class="control-unit"> Valid over Q ∈ [0.3, 8] LPM</span>
+            <p></p>
         </div>
 
-        <div class="control">
-          <div class="control-label">Resolution (R<sub>m</sub>)</div> <br>
-          <input class="textinput" style="width:40%" id="time_in" type="number" min="0.01" max="10" value="1.2">
-          <!-- <select id="time_unit">
-            <option>mins</option>
-            <option selected="selected">hrs</option>
-          </select> -->
-          <div class="control-unit">
-            operational range of R<sub>m</sub> at this configuration:...needs to be fixed...
 
-          </div>
-        </div>
+          <p> </p>
 
-        <div class="control" style="width:400px;">
-          <div class="control-label">flow rate (Q)
-            <span class="control-unit"> LPM </span>
-          </div> <br>
-          <select id="R12_in">
-            <option value="0.00,0.40">< 0.40</option>
-            <option value="0.40,0.55">0.40 - 0.55</option>
-            <option value="0.55,0.75" selected="selected">0.55 - 0.75</option>
-            <option value="0.75,0.90">0.75 - 0.90</option>
-            <option value="0.90,0.95">0.90 - 0.95</option>
-            <option value="0.95,0.98">0.95 - 0.98</option>
-            <option value="0.98,1.00">> 0.98</option>
-          </select>
-          <div class="control-unit">
-          (verified range of Q:  0.3-8 LPM)
-          </div>
-
-          <!-- Phantom width image. Replaced accordingly in script. -->
-          <!-- <div style="display:inline;">
-            <img src="imgs/0.png" id="distimg">
-          </div> -->
-
-          <p>
-          </p>
-          <h2> Adjustable factors</h2>
+          <h2> Estimated adjustable factors</h2>
 <!-- 
           The width  <div style="display:inline;" id="no_out"></div> simulations
    -->
-          <p>
-          <div class="out">
+
+          <div class="outWidth">
+            <p></p>
             <div class="control-label">Width factor (μ):</div> <br>
-            <div class="textoutput" id="Rm_out">-</div>
+            <p></p>
+            <span class="control-unit">[μ<sub>min</sub>, μ<sub>max</sub>] : </span><div class="textoutput control-unit" id="muOut" style="display:inline;"">-</div>
           </div>
-<!--   
-          <div class="out">
-            <div class="control-label">No. of PMA setpoints per decade (n<sub>c</sub>')
-              <span class="control-unit">#</span>
-            </div> <br>
-            <div class="textoutput" id="nc_out">-</div>
-          </div> -->
-  
-          <!-- <div class="out">
-            <div class="control-label">No. of SP2 bins per decade (n<sub>s</sub>')
-              <span class="control-unit">#</span>
-            </div> <br>
-            <div class="textoutput" id="ns_out">-</div>
-          </div> -->
-          <br>
-          <div class="out" style="padding-right: 0px; padding-bottom: 10px; width: 200px;">
-            <div class="control-label">Height factor (λ):
-              
-            </div> <br>
-            <div class="textoutput"  >
-              <div style="display:inline-block">
-                <div id="Ns0_out" style="display:inline;">-</div>k</div>
-            </div>
+          <p></p>
+          <div class="outHeight">
+            <div class="control-label">Height factor (λ):</div> <br>
+            <p></p>
+            <span class="control-unit">[λ<sub>min</sub>, λ<sub>max</sub>] : </span><div class="textoutput control-unit" id="lambdaOut" style="display:inline;"">-</div>
           </div>
-  
-          <br>
-  
-          <!-- <div class="out">
-            <div class="control-label">Actual time (t)
-              <span class="control-unit" id="time_out_unit">hrs</span>
-            </div> <br>
-            <div class="textoutput2" id="time_out"></div>
-          </div> -->
-<!--   
-          <div class="out">
-            <div class="control-label">Actual correlation (R<sub>12</sub>)
-              <span class="control-unit">[0,1]</span>
-            </div> <br>
-            <div class="textoutput2" id="R12_out">-</div>
-          </div> -->
+
+
 
 
         </div>
@@ -171,16 +194,11 @@
 
 
       <article class="item3">
-        <p>
-          ... plots and other graphical elements that contain:
-        </p>
-        
-        <p>
-          Cambusion ideal trnsfer function vs. Actual transfer function.
-        </p>
-        <p>
-          ???????? what else???
-        </p>
+
+        <div class="iframe-container1">
+          <iframe name="graphic1" src="graph1.html" frameborder="0" scrolling="no" style="visibility:visible;" onload="this.style.visibility = 'visible';">
+          </iframe>
+        </div>
 
       </article>
     
@@ -207,7 +225,44 @@
   
 
   <!-- Read in data as a script -->
-  <script src="data.js"></script>
-  <script src="index.js"></script>
+
+  <script src="/js/index.js"></script>
+
 
 </body>
+<script>
+
+// For dark mode.
+const btn = document.querySelector("#btn-toggle");
+btn.addEventListener("click", function () {
+  // Toggle dark theme.
+  dark = !dark;
+
+  toggleNight();  // apply theme
+  scrollFunction();
+})
+
+// When the user scrolls down 50px from the top of the document, reformat header.
+window.onscroll = function() {
+  scrollFunction()
+};
+function scrollFunction() {
+  if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 60) {
+    if (dark) {
+      document.getElementById("header").style.borderBottom = "1px #000 solid";
+    } else {
+      document.getElementById("header").style.borderBottom = "1px #DDD solid";
+    }
+  } else {
+    if (dark) {
+      document.getElementById("header").style.borderBottom = "1px #242526 solid";
+    } else {
+      document.getElementById("header").style.borderBottom = "1px #FCFCFC solid";
+    }
+  }
+}
+scrollFunction();  // initialize
+
+</script>
+
+</html>
