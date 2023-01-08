@@ -46,6 +46,7 @@ article {
   grid-column-end: 3;
 }
 
+
 /* Single column display for narrow displays */
 @media (max-width: 750px) {
   .grid-container {
@@ -299,4 +300,73 @@ nav {
   /* text-shadow: 0px 0px 2px #48DEB1; */
   text-shadow: -0.8px 0.8px 0px #48DEB1;
   line-height: 13pt;
+}
+
+
+
+/* For the visualization plot */
+
+
+
+
+/* For plot elements */
+.axis {
+  font-family: 'Open Sans', Arial, sans-serif;
+  font-size: 10pt;
+  font-weight: 200;
+}
+.axis line {
+  stroke: black;
+}
+body.dark-theme .axis line {
+  stroke: white;
+}
+
+.axis path {
+  stroke: black;
+}
+body.dark-theme .axis path {
+  stroke: white;
+}
+
+.axis text{
+  fill: black;
+}
+body.dark-theme .axis text{
+  fill: white;
+}
+
+.legend-label {
+  fill: black;
+}
+body.dark-theme .legend-label {
+  fill: white;
+}
+
+.legend-circle {
+  fill: #EDEDED;
+  stroke: black;
+}
+body.dark-theme .legend-circle {
+  fill: #222;
+  stroke: white;
+}
+
+.plot-fill {
+  fill: white;
+}
+body.dark-theme .plot-fill {
+  fill: #111111;
+}
+
+body.dark-theme .diff-line {
+  stroke: white;
+}
+
+
+.container{
+
+  width: 500;
+  height: 500;
+  background-color: red;
 }

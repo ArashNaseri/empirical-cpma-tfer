@@ -313,7 +313,24 @@ var mp2zp = function(m, z, T, P, prop) {
 // <------------------------------------------------------>
 // Calculate theoretical Diffusing CPMA transfer function //
 // <------------------------------------------------------>
-
+var tfer_1C = function(sp, m, d, z, prop) {
+  if (typeof prop == 'undefined' || (prop != null && prop.hasOwnProperty("__kwargtrans__"))) {
+    ;
+    var prop = {};
+  };
+  var __left0__ = parse_inputs(sp, m, d, z, prop);
+  var tau = __left0__[0];
+  var C0 = __left0__[1];
+  var C3 = tau * (((Math.pow(sp['alpha'], 2) * prop['rc'] + ((2 * sp['alpha']) * sp['beta']) / prop['rc']) + Math.pow(sp['beta'], 2) / Math.pow(prop['rc'], 3)) - C0 / (m * prop['rc']));
+  var C4 = tau * (((Math.pow(sp['alpha'], 2) - ((2 * sp['alpha']) * sp['beta']) / Math.pow(prop['rc'], 2)) - (3 * Math.pow(sp['beta'], 2)) / Math.pow(prop['rc'], 4)) + C0 / (m * Math.pow(prop['rc'], 2)));
+  var G0 = (function __lambda__(r) {
+    return (prop['rc'] + ((r - prop['rc']) + C3 / C4) * Math.exp((-(C4) * prop['L']) / prop['v_bar'])) - C3 / C4;
+  });
+  var ra = Math.min(prop['r2'], Math.max(prop['r1'], G0(prop['r1'])));
+  var rb = Math.min(prop['r2'], Math.max(prop['r1'], G0(prop['r2'])));
+  var Lambda = (1 / (2 * prop['del'])) * (rb - ra);
+  return [Lambda, G0];
+};
 var tfer_1C_diff = function(sp, m, d, z, prop) {
   if (typeof prop == 'undefined' || (prop != null && prop.hasOwnProperty("__kwargtrans__"))) {
     ;
@@ -571,9 +588,9 @@ var fLoss = function(m, Rm, Q){
 
   var   tri_tfer = function(Rm, mu, lambda){
 
-    mTilda=linspace(0.5, 2, 601)
-    Beta=1/Rm;
-    var omegaTri =[];
+   var  mTilda=linspace(0.5, 2, 601)
+   var   Beta=1/Rm;
+   var omegaTri =[];
     for (var i=0; i<mTilda.length; i++) {
 
       omegaTri[i]= (0.5*lambda*mu/Beta)*(
@@ -582,6 +599,7 @@ var fLoss = function(m, Rm, Q){
                   2* Math.abs(mTilda[i]-1))
     }
     return [mTilda, omegaTri]
+
   }
 
 
