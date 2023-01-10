@@ -6,7 +6,7 @@
   <title>CPMA tfer</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" href="/imgs/favicon.svg" type="image/svg">
+  <link rel="icon" href="/imgs/favicon.png" type="image/svg">
 
   <link href="https://fonts.googleapis.com/css?family=Indie+Flower|Lobster" rel="stylesheet">
   <script src="https://kit.fontawesome.com/ba6e6370a1.js" crossorigin="anonymous"></script>
@@ -121,94 +121,146 @@
           from fitting function derived for the corresponding CPMA flow rate, whereas for other flow rates,
           the loss factor is obtained from simple interpolation between the closest lower and higher CPMA flow rates.
         </p>
+        
       </article>
 <!--  Division for Inputs, Start -->
-      <article class="item2" style="width:500px;">
+      <article class="item1" > <!-- style="width:500px;"-->
         <p></p>
         <h2>Inputs</h2>
+        <p></p>
+            <h3>CPMA dimensions (Cambustion Ltd)</h3>
+              <p></p>
+              <div class="control">
+                <span class="control-label">Inner radius r<sub>1</sub>: </span><span class="control-unit"> 6 cm</span>
+              </div>
+              <div class="control">
+                <span class="control-label">Outer radius r<sub>2</sub>: </span><span class="control-unit"> 6.1 cm</span>
+              </div>
+              <div class="control">
+                <span class="control-label">Length L: </span><span class="control-unit"> 20 cm</span>
+              </div>
+              <div class="control">
+                <span class="control-label">  ω<sub>2</sub>/ω<sub>1</sub>: </span><span class="control-unit"> 0.9696</span>
+              </div>
 
-        <div class="control" style="width:300px;">
-          <div class="control-label"> Mass set point (m<sub>p</sub>)<span class="control-unit"> fg </span>
-          </div> <br>
-          <p></p>
-          <input class="textBoxInput textinput slide control-unit" id="m_star" type="number" min="0.05" max="100" value="1" onchange="update()" ><br>
-          <!-- m* = <span id="mRangeValue">1</span><span class="control-unit"> fg</span><br> -->
-          <span class="control-unit">  Valid over m* ∈ [0.05,100] fg</span>
-          <p></p>
-
-        </div><br>
-
-        <div class="control" style="width:300px;">
-          <div class="control-label">Resolution (R<sub>m</sub>)
-          </div> <br>
-          
-          <input class="textBoxInput textinput slide" style="width:100px control-unit"  id="Rm" type="number" min="2" max="15"  step="0.1" value="3" onchange="update()"><br>  <!--"rmRangeValue.innerText=this.value"-->
-          
-          <!-- Rm = <span id="rmRangeValue">3</span><br> -->
-          <span class="control-unit"> Valid over R<sub>m</sub> ∈ [2,15]</span>
-            <p></p>
-
-        </div> <br>
+              <br>
 
 
+              <p></p>
+            <h3>Set point mode </h3> <br>
+
+            <!-- Add sliders etc. -->
+            <div class="control" id="select-div" style="width:1000px;">
+
+              <select id="sp-mode" class="control-unit"  onchange="update()">
+                <option id="option1"> Mass + Resolution + flow rate</option>
+                <option id="option2" >Angular speed + Voltage + flow rate</option>
+              </select> 
 
 
-        <div class="control" style="width:300px;">
-          <p></p>
-          <div class="control-label">flow rate (Q)<span class="control-unit"> LPM </span>
-          </div> <br>
-          <p></p>
-          <input class=" textBoxInput textinput slide control-unit" type="number" style="width:100px" name="qSlider" id="qSlider" min="0.3" max="8" value="1.5" step="0.1" onchange="update()"><br> <!--"qRangeValue.innerText=this.value"-->
-          <!-- Q = <span id="qRangeValue">1.5</span> <span class="control-unit"> (LPM)</span><br> -->
+              
+            </div><br>
 
-          <span class="control-unit"> Valid over Q ∈ [0.3, 8] LPM</span>
-            <p></p>
+            <div>
+              <div class="control" style="width:300px;">
+                <div class="control-label" id="varName1"> Mass set point (m<sub>p</sub>)<span class="control-unit"> fg </span>
+                </div> <br>
+                <input class="textBoxInput textinput slide control-unit" id="m_star" type="number" min="0.05" max="100" value="0.01" onchange="update()" ><br>
+                <span class="control-unit">  m* ∈ [ 0.05 , 100 ] fg</span>
+                <p></p>
+              </div>
+      
+              <div class="control" style="width:300px;">
+                <div class="control-label" id="varName2">Resolution (R<sub>m</sub>)
+                </div> <br>
+                <input class="textBoxInput textinput slide" style="width:100px control-unit"  id="Rm" type="number" min="2" max="15"  step="0.1" value="5" onchange="update()"><br>  <!--"rmRangeValue.innerText=this.value"-->
+                <span class="control-unit"> R<sub>m</sub> ∈ [ 2 , 15 ]</span>
+                  <p></p>
+              </div>
+
+              
+
+              <div class="control" style="width:300px;">
+                <div class="control-label" id="Qname">flow rate (Q)<span class="control-unit"> LPM </span>
+                </div> <br>
+                <input class=" textBoxInput textinput slide control-unit" type="number" style="width:100px" id="qNum" min="0.3" max="8" value="1.5" step="0.1" onchange="update()"><br> <!--"qRangeValue.innerText=this.value"-->
+                <span class="control-unit"> Q ∈ [ 0.3 , 8 ] LPM</span>
+                  <p></p>
+              </div>
+
+            </div>
+
+
+            <h3>Particle properties </h3> <br>
+
+        <div class="control"  style="width:300px;">
+          <span class="control-label">D<sub>m</sub></span> <br>
+          <input class="textinput" id="Dmnum" type="number" min="0.1" max="4" step="0.05" value="2.48" onchange="update()"">
+        </div>
+    
+        <div class="control"  style="width:300px;">
+          <span class="control-label">ρ<sub>eff,100</sub></span>
+          <span class="control-unit">kg/m<sup>3</sup></span> <br>
+          <input class="textinput" id="rhonum" type="number" min="20" max="1e4" step="20" value="510" onchange="update()"">
+        </div>
+        <div class="control"  style="width:300px;">
+          <span class="control-label" style="padding-top: 10px;"> Charge state z :<span class="control-unit">1</span> <br>
+        </div>
+        <br>
+
+    
+        <div class="control"  style="width:300px;">
+          <span class="control-label" id="varName3"  style="width:300px;">Angular speed </span> <br>
+          ω = <span class="control-unit" id="Wval"  style="width:300px;">-</span> <span class="control-unit" >rad/s</span> <br>
+          ω = <span class="control-unit" id="Wrpmval"  style="width:300px;">-</span> <span class="control-unit" >RPM</span>
+        </div>
+    
+        <div class="control"  style="width:300px;">
+          <span class="control-label" id="varName4"  style="width:300px;">Voltage </span> <br>
+          V = <span class="control-unit" id="Vval"  style="width:300px;">-</span> <span class="control-unit">V</span>
+        </div>
+    
+        <div class="control"  style="width:300px;">
+          <span class="control-label" id="varName5"  style="width:300px;">Resolution </span> <br>
+          R<sub>m</sub> = <span class="control-unit" id="Rmval2"  style="width:300px;">-</span>
         </div>
 
-
-          <p> </p>
-<!--  Division for Inputs, End  -->
-          <h2> Estimated adjustable factors</h2>
-<!-- 
-          The width  <div style="display:inline;" id="no_out"></div> simulations
-   -->
-
-          <div class="outWidth">
-            <p></p>
-            <div class="control-label">Width factor (μ):</div> <br>
-            <p></p>
-            <span class="control-unit">[μ<sub>min</sub>, μ<sub>max</sub>] : </span><div class="textoutput control-unit" id="muOut" style="display:inline;"">-</div>
-          </div>
-          <p></p>
-          <div class="outHeight">
-            <div class="control-label">Height factor (λ):</div> <br>
-            <p></p>
-            <span class="control-unit">[λ<sub>min</sub>, λ<sub>max</sub>] : </span><div class="textoutput control-unit" id="lambdaOut" style="display:inline;"">-</div>
-            
-            <p></p>
-            <div id="my_dataviz"></div>
-            <p></p>
-            <div id="my_legend"></div>
-          
-          
-          </div>
-
-
-
-
+        <div class="control"  style="width:300px;">
+          <span class="control-label" id="varName6"  style="width:300px;">Mass setpoint </span> <br>
+          m<sup>*</sup> = <span class="control-unit" id="mStarval2"  style="width:300px;">-</span><span class="control-unit">fg</span>
         </div>
-        </p>
-      <!-- </article>
+    
 
 
-      <article class="item3">
 
 
-  
+
+      </article>
 
 
-      </article> -->
-
+      <article class="item1" >
+        <h2> Estimated adjustable factors</h2>
+        <!-- 
+                  The width  <div style="display:inline;" id="no_out"></div> simulations
+           -->
+        
+                  <div class="outWidth">
+                    <p></p>
+                    <div class="control-label">Width factor (μ):</div> <br>
+                    <p></p>
+                    <span class="control-unit">[μ<sub>min</sub>, μ<sub>max</sub>] : </span><div class="textoutput control-unit" id="muOut" style="display:inline;"">-</div>
+                  </div>
+                  <p></p>
+                  <div class="outHeight">
+                    <div class="control-label">Height factor (λ):</div> <br>
+                    <p></p>
+                    <span class="control-unit">[λ<sub>min</sub>, λ<sub>max</sub>] : </span><div class="textoutput control-unit" id="lambdaOut" style="display:inline;"">-</div>
+                    
+                    <p></p>
+                    <div id="my_dataviz"></div>
+                    <p></p>
+                    <div id="my_legend"></div>
+      </article>
     </div>
 
   </div>

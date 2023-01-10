@@ -20,10 +20,11 @@ var prop_pma = function(opts) {
       'L': 0.2,
       'p': 1,
       'T': 293,
-      'Q': (3 / 1000) / 60,
+      'Q': (Number($("#qNum").val()) / 1000) / 60,
       'omega_hat': 32 / 33
     };
   }
+
   prop['rc'] = (prop['r1'] + prop['r2']) / 2;
   prop['r_hat'] = prop['r1'] / prop['r2'];
   prop['del'] = (prop['r2'] - prop['r1']) / 2;
@@ -33,8 +34,13 @@ var prop_pma = function(opts) {
   prop['D'] = (function __lambda__(B) {
     return (kB * prop['T']) * B;
   });
-  prop['Dm'] = 3;
-  prop['m0'] = 4.7124e-25; // mass @ dm = 1 in fg
+  prop['Dm'] = Number($("#Dmnum").val());
+  var rho_eff100=Number($("#rhonum").val());
+  var m100 = rho_eff100 * (pi * Math.pow(100e-9, 3) / 6) // effective density @ 1 nm
+  prop['m0'] = m100 * Math.pow((1 / 100), prop['Dm']) // adjust mass-mobility relation parameters
+  //4.7124e-25; // mass @ dm = 1 in fg
+
+
   return prop;
 };
 // <------------------------------------------------------>
@@ -59,6 +65,7 @@ var get_setpoint = function(prop) {
     sp[arguments[1]] = arguments[2];
     sp[arguments[3]] = arguments[4];
   }
+  
   var e = 1.60218e-19;
   //  if m* is not given
   if (sp['m_star'] == null) {
@@ -117,6 +124,7 @@ var get_setpoint = function(prop) {
 
   //  if Rm and m* are given
   } else if (sp['Rm'] != null) {
+   
     var n_B = get_nb(sp['m_star'], prop);
     var __left0__ = mp2zp(sp['m_star'], 1, prop['T'], prop['p'], prop);
     var B_star = __left0__[0];
@@ -316,6 +324,7 @@ var mp2zp = function(m, z, T, P, prop) {
 var tfer_1C = function(sp, m, d, z, prop) {
   if (typeof prop == 'undefined' || (prop != null && prop.hasOwnProperty("__kwargtrans__"))) {
     ;
+   
     var prop = {};
   };
   var __left0__ = parse_inputs(sp, m, d, z, prop);
