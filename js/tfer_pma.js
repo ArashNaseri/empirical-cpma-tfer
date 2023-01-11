@@ -20,7 +20,7 @@ var prop_pma = function(opts) {
       'L': 0.2,
       'p': 1,
       'T': 293,
-      'Q': (Number($("#qNum").val()) / 1000) / 60,
+      'Q': (Number($("#input3").val()) / 1000) / 60,
       'omega_hat': 32 / 33
     };
   }
@@ -597,7 +597,7 @@ var fLoss = function(m, Rm, Q){
 
   var   tri_tfer = function(Rm, mu, lambda){
 
-   var  mTilda=linspace(0.5, 2, 601)
+   var  mTilda=linspace(0.5, 1.5, 301)
    var   Beta=1/Rm;
    var omegaTri =[];
     for (var i=0; i<mTilda.length; i++) {
