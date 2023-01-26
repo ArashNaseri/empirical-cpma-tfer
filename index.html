@@ -6,11 +6,14 @@
   <title>CPMA tfer</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" href="/imgs/favicon.png" type="image/svg">
+  <link rel="icon" href="imgs/favicon.png" type="image/svg">
 
   <link href="https://fonts.googleapis.com/css?family=Indie+Flower|Lobster" rel="stylesheet">
   <script src="https://kit.fontawesome.com/ba6e6370a1.js" crossorigin="anonymous"></script>
-
+   <!-- Load bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  
   <!-- Load styles -->
   <link href="style.css" rel="stylesheet">
   <!-- Load d3.js -->
@@ -39,10 +42,13 @@
       document.body.classList.toggle("dark-theme");
 
       // Update background color
-      if (dark) {
-        document.querySelector(':root').style.setProperty('--background-color', '#242526');
+      if (dark) {article
+        $("#body").css( "background-color", '#242526')//style.setProperty('--background-color', '#242526');
+        $("#article").css( "background-color", '#242526')
       } else {
-        document.querySelector(':root').style.setProperty('--background-color', '#FCFCFC');
+        $("body").css( "background-color", '#FCFCFC')
+        $("article").css( "background-color", '#FCFCFC')
+        // document.querySelector(':root').style.setProperty('--background-color', '#FCFCFC');
       }
     };
     </script>
@@ -57,14 +63,14 @@
         <li><a href="https://www.tandfonline.com/doi/full/10.1080/02786826.2019.1680794" class="nav-link" id="data-link-a">
             <div style="display:flex;vertical-align:middle;">
               <span><i class="far fa-file-alt" style="font-size:14pt;"></i></span>
-              <span style="padding-left:4px;">Link to paper</span>
+              <span style="padding-left:4px;"> Paper 📝 </span>
             </div>
         </a></li>
         <li><a href="https://github.com/ArashNaseri" class="nav-link">
           <div style="display:flex;vertical-align:middle;">
             <img src="docs/imgs/GitHub-Mark-64px.png" id="gh-black" style="height:15pt;padding-right:5px;">
             <img src="docs/imgs/GitHub-Mark-Light-64px.png" id="gh-white" style="height:15pt;padding-right:5px;">
-            <span>@Naseri</span>
+            <span> Naseri</span>
           </div>
         </a></li>
         <li>
@@ -87,26 +93,36 @@
       <article class="item1">
         <h2>Overview</h2>
         
-        <div>
-          This web app is designed to examine the transfer function of the CPMA.
-          The app uses data derived from tandem CPMA (TCPMA) measurements conducted by
-          <a href="#">Naseri et al. (2023)</a>.
+        <div class="container" style="height: fit-content; width: fit-content;">
+          <div class="row">
+            <div class=" row col-lg-12">
+              This web app is designed to examine the transfer function of the CPMA.
+              The app uses data derived from tandem CPMA (TCPMA) measurements conducted by
+              <a href="#">Naseri et al. (2023)</a>.
+                
+            </div>
+            <div class="row col-lg-12">
+              <img src="imgs/cpmaIcon.svg">
+            </div>
+          </div>
         <div>
 
-        <div class="photo">
-          <img src="/imgs/cpmaIcon.svg" style="width:100%;max-width:800px; max-height:500px;margin-top:10px;margin-bottom:10px;">
-        </div>
 
-        <div>
-          A triangular transfer function was used to approximate the CPMA transfer function and deviations
-           from the idealized triangular transfer function were determined by two factors:
-            (i) the width factor (μ), and (ii) the height factor (λ), such that a value of 1 for each
-             factor implied no deviation between the actual and theoretical triangular CPMA transfer functions.
-        </div>
+          <div class="container" style="height: fit-content; width: fit-content;">
+            <div class="row d-flex justify-content-center">
+              <div class=" row col-lg-12">
+                A triangular transfer function was used to approximate the CPMA transfer function and deviations
+                from the idealized triangular transfer function were determined by two factors:
+                 (i) the width factor (μ), and (ii) the height factor (λ), such that a value of 1 for each
+                  factor implied no deviation between the actual and theoretical triangular CPMA transfer functions.
+                  
+              </div>
+              <div class="row" style="max-width:800px; display:inline"> 
+                <img  class="d-flex justify-content-center"src="imgs/triangle_tfer.svg">
+              </div>
+            </div>
+          <div>
 
-        <div class="photo">
-          <img src="/imgs/triangle_tfer.svg" style="width:100%;max-width:600px; max-height:500px;margin-top:10px">
-        <div class="photo">
 
         <p>
           The width factor higher than one (μ>1), indicating that the CPMA transfer function is narrower than
@@ -230,12 +246,6 @@
         </div>
 
 
-    
-
-
-
-
-
       </article>
 
 
@@ -244,9 +254,8 @@
         <!-- 
                   The width  <div style="display:inline;" id="no_out"></div> simulations
            -->
-        
                   <div class="outWidth">
-                    <p></p>
+                    <!-- <p></p>
                     <div class="control-label">Width factor (μ):</div> <br>
                     <p></p>
                     <span class="control-unit">[μ<sub>min</sub>, μ<sub>max</sub>] : </span><div class="textoutput control-unit" id="mu" style="display:inline;"">-</div>
@@ -260,7 +269,18 @@
                     <p></p>
                     <div id="my_dataviz"></div>
                     <p></p>
-                    <div id="my_legend"></div>
+                    <div id="my_legend"></div> -->
+
+
+                  <div class="container">
+                    <div class="row">
+                      <div class="col-lg-6 d-flex justify-content-center" id="my_dataviz"></div>
+
+                      <div class="col-lg-6 d-flex justify-content-center" id="my_legend"></div>
+                    </div>
+                  </div>
+
+
       </article>
     </div>
 
@@ -286,7 +306,7 @@
 
   <!-- Read in data as a script -->
 
-  <script src="/js/index.js"></script>
+  <script src="js/index.js"></script>
 
 
 </body>

@@ -77,7 +77,7 @@ for (ii = 0; ii < m_vec.length; ii++) {
 // ---------------------------------------------------------- 
 // Select the my_dataviz function and then set the width and height
 var $container = $('#my_dataviz'),
-  width_a = 0.95 * Math.min($container.width(), 870),
+  width_a = 0.85 * Math.min($container.width(), 870),
   height_a = $container.height()
 
 
@@ -90,7 +90,7 @@ var margin_legend = {
 }
 var legend = d3.select("#my_legend")
   .append("svg")
-  .attr("width", 500)//width_a - margin_legend.left - margin_legend.right
+  .attr("width", width_a - margin_legend.left - margin_legend.right)//
   .attr("height", 110)
   .append("g")
 // legend for lines
@@ -222,7 +222,7 @@ svg.append("rect")
 // Add X axis
 var x = d3.scaleLinear()
   .domain([0.5, 1.5])
-  .range([0,495]); //.range([0, width-200]); 
+  .range([0,0.85*width]); //.range([0, width-200]); 
 var xAxis = svg.append("g")
   .attr("transform", "translate(0," + height + ")")
   .attr("class", "axis")
@@ -235,7 +235,7 @@ var xAxis2 = svg.append("g")
 
 // Add Y axis
 var yMax = 1,
-  yMin = 0;
+    yMin = 0;
 
 var y = d3.scaleLinear()
   .domain([yMin, yMax])
@@ -245,7 +245,7 @@ var yAxis = svg.append("g")
   .call(d3.axisLeft(y).ticks(5));
   
 var yAxis2 = svg.append("g")
-  .attr("transform", "translate(" + 495 + ",0)")//  .attr("transform", "translate(" + width + ",0)")
+  .attr("transform", "translate(" + 0.85*width + ",0)")//  .attr("transform", "translate(" + width + ",0)")
   .attr("class", "axis")
   .call(d3.axisRight(y).ticks(5))
 
@@ -281,7 +281,6 @@ svg.append("path")
       return y(d.yIdeal)
     })
   )
-
 
 svg.append("path")
   .datum(dataTri)
@@ -342,7 +341,6 @@ svg.append("path")
     $('#dmval1').html(Math.round(Number((Math.pow(sp['m_star'] / prop['m0'], 1 / prop['Dm'])) )* 100) / 100 );
     var e = 1.60218e-19;
     $('#omegahnum').val(Math.round(prop['omega_hat'] * 1e5) / 1e5);
-  
 
 
 //----------------------------Update based on controls---------------------//
@@ -660,7 +658,7 @@ function refreshPlot(dataTri,data1C) {
   d3.select("svg").remove();
   // Select the my_dataviz function and then set the width and height
   var $container = $('#my_dataviz'),
-  width_a = 0.95 * Math.min($container.width(), 870),
+  width_a = 0.85 * Math.min($container.width(), 870),
   height_a = $container.height()
 
 
