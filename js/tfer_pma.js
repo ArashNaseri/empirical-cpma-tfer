@@ -595,7 +595,28 @@ var fLoss = function(m, Rm, Q){
 // Tringular transfer function
 // <------------------------------------------------------>
 
-  var   tri_tfer = function(Rm, mu, lambda){
+var   tri_tfer = function(Rm, mu, lambda, m_star, mp){
+
+  var  mTilda=mp/m_star
+  lambda= 0.5* (lambda[0]+lambda[1])
+  mu= 0.5* (mu[0]+mu[1])
+  var   Beta=1/Rm;
+  
+  var omegaTri = (0.5*lambda*mu/Beta)*(
+                 Math.abs(mTilda-(1+Beta/mu))+
+                 Math.abs(mTilda-(1-Beta/mu))-
+                 2* Math.abs(mTilda-1))
+   return omegaTri
+
+ }
+
+
+
+
+
+
+
+  var   tri_tfer_plot = function(Rm, mu, lambda){
 
    var  mTilda=linspace(0.5, 1.5, 301)
    var   Beta=1/Rm;

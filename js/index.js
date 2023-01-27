@@ -4,6 +4,9 @@ var colors = ["#1E2978", "#48DEB1", "#222222", "#DD393A"]; // new
 var m_star = Number($("#input1").val())*1e-18;
 var Rm = Number($("#input2").val());
 var Q = Number($("#input3").val());
+var mp = Number($("#input4").val());
+
+
 
 // ________________________________________________________________
 
@@ -11,17 +14,19 @@ var Q = Number($("#input3").val());
 var mu = fWidth ( m_star*1e18, Rm, Q)
 var lambda = fLoss ( m_star*1e18, Rm, Q)
 
-$('#mu').html(mu[0].toFixed(3)+" , "+ mu[1].toFixed(3));
+
+$('#mu').html(0.5*(mu[0]+ mu[1]).toFixed(3));
 if (lambda[0]<0) {
   lambda[0] =0
-  $('#lambda').html(lambda[0].toFixed(0)+ ", " + lambda[1].toFixed(3));
+  $('#lambda').html((0.5*(lambda[0]+ lambda[1]).toFixed(3)));
 } else {
-  $('#lambda').html(lambda[0].toFixed(3)+" , "+ lambda[1].toFixed(3));
+  $('#lambda').html((0.5*(lambda[0]+ lambda[1]).toFixed(3)));
 };
+var Omega_CPMA =tri_tfer(Rm, mu, lambda, m_star*1e18, mp)
+$('#Omega_CPMA').html(Omega_CPMA.toFixed(2));
 
-
-var [mTilde, IdealOmega]= tri_tfer (Rm,  1, 1)
-var [mTilde, nonIdealOmega]= tri_tfer (Rm,  0.5*(mu[0]+mu[1]), 0.5*(lambda[0]+lambda[1]))
+var [mTilde, IdealOmega]= tri_tfer_plot (Rm,  1, 1)
+var [mTilde, nonIdealOmega]= tri_tfer_plot (Rm,  0.5*(mu[0]+mu[1]), 0.5*(lambda[0]+lambda[1]))
 
 
 var dataTri = [];
@@ -77,7 +82,7 @@ for (ii = 0; ii < m_vec.length; ii++) {
 // ---------------------------------------------------------- 
 // Select the my_dataviz function and then set the width and height
 var $container = $('#my_dataviz'),
-  width_a = 0.85 * Math.min($container.width(), 870),
+  width_a = 0.9 * Math.min($container.width(), 870),
   height_a = $container.height()
 
 
@@ -222,7 +227,7 @@ svg.append("rect")
 // Add X axis
 var x = d3.scaleLinear()
   .domain([0.5, 1.5])
-  .range([0,0.85*width]); //.range([0, width-200]); 
+  .range([0,0.9*width]); //.range([0, width-200]); 
 var xAxis = svg.append("g")
   .attr("transform", "translate(0," + height + ")")
   .attr("class", "axis")
@@ -245,7 +250,7 @@ var yAxis = svg.append("g")
   .call(d3.axisLeft(y).ticks(5));
   
 var yAxis2 = svg.append("g")
-  .attr("transform", "translate(" + 0.85*width + ",0)")//  .attr("transform", "translate(" + width + ",0)")
+  .attr("transform", "translate(" + 0.9*width + ",0)")//  .attr("transform", "translate(" + width + ",0)")
   .attr("class", "axis")
   .call(d3.axisRight(y).ticks(5))
 
@@ -607,15 +612,17 @@ function refreshData(m_star, Rm, prop) {
         
       }
   
-      $('#mu').html(mu[0].toFixed(3)+" , "+ mu[1].toFixed(3));
+      $('#mu').html(0.5*(mu[0]+ mu[1]).toFixed(3));
       if (lambda[0]<0) {
         lambda[0] =0
-        $('#lambda').html(lambda[0].toFixed(0)+ ", " + lambda[1].toFixed(3));
+        $('#lambda').html((0.5*(lambda[0]+ lambda[1]).toFixed(3)));
       } else {
-        $('#lambda').html(lambda[0].toFixed(3)+" , "+ lambda[1].toFixed(3));
+        $('#lambda').html((0.5*(lambda[0]+ lambda[1]).toFixed(3)));
       };
+      var Omega_CPMA =tri_tfer(Rm, mu, lambda, m_star*1e18, mp)
+      $('#Omega_CPMA').html(Omega_CPMA.toFixed(2));
 
-    var [mTilde, nonIdealOmega]= tri_tfer (Rm,  0.5*(mu[0]+mu[1]), 0.5*(lambda[0]+lambda[1]))
+    var [mTilde, nonIdealOmega]= tri_tfer_plot (Rm,  0.5*(mu[0]+mu[1]), 0.5*(lambda[0]+lambda[1]))
 
       
     var dataTri = [];
@@ -658,14 +665,15 @@ function refreshPlot(dataTri,data1C) {
   d3.select("svg").remove();
   // Select the my_dataviz function and then set the width and height
   var $container = $('#my_dataviz'),
-  width_a = 0.85 * Math.min($container.width(), 870),
+  // width_a = window.screen.height * 0.1
+  width_a = 0.9 * Math.min($container.width(), 870),
   height_a = $container.height()
 
 
 // for legend
 var margin_legend = {
   top: 0,
-  right: 50,
+  right: 30,
   bottom: 0,
   left: 60
 }
@@ -673,9 +681,9 @@ var margin_legend = {
 // set the dimensions and margins of the graph
 var margin = {
     top: 30,
-    right: 1.5,
+    right: 0,
     bottom: 50,
-    left: 55
+    left: 0
   },
   width = width_a - margin.left - margin.right,
   height = 350 - margin.top - margin.bottom;
@@ -697,7 +705,7 @@ svg.append("rect")
 // Add X axis
 var x = d3.scaleLinear()
   .domain([0.5, 1.5])
-  .range([0, 495]); //.range([0, width-200]); 
+  .range([0, width*0.9]); //.range([0, width-200]); 
 var xAxis = svg.append("g")
   .attr("transform", "translate(0," + height + ")")
   .attr("class", "axis")

@@ -13,7 +13,7 @@
    <!-- Load bootstrap -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-  
+
   <!-- Load styles -->
   <link href="style.css" rel="stylesheet">
   <!-- Load d3.js -->
@@ -29,118 +29,91 @@
   <meta name="color-scheme" content="light dark" />
 
 
-
-  <script>
-
-    // Initialize light/dark mode.
-    const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
-    var dark = prefersDarkScheme.matches;
-
-    // Apply appropriate theme.
-    function toggleNight () {
-      // Swap CSS.
-      document.body.classList.toggle("dark-theme");
-
-      // Update background color
-      if (dark) {article
-        $("#body").css( "background-color", '#242526')//style.setProperty('--background-color', '#242526');
-        $("#article").css( "background-color", '#242526')
-      } else {
-        $("body").css( "background-color", '#FCFCFC')
-        $("article").css( "background-color", '#FCFCFC')
-        // document.querySelector(':root').style.setProperty('--background-color', '#FCFCFC');
-      }
-    };
-    </script>
 </head>
 
-<body onload="if (dark) { toggleNight(); }">
+<body>
 
-  <header id="header">
-    <a href="#h1" id="header-logo"><b>CPMA transfer function.</b></a>
-    <nav>
-      <ul class="nav-list">
-        <li><a href="https://www.tandfonline.com/doi/full/10.1080/02786826.2019.1680794" class="nav-link" id="data-link-a">
-            <div style="display:flex;vertical-align:middle;">
-              <span><i class="far fa-file-alt" style="font-size:14pt;"></i></span>
-              <span style="padding-left:4px;"> Paper 📝 </span>
-            </div>
-        </a></li>
-        <li><a href="https://github.com/ArashNaseri" class="nav-link">
-          <div style="display:flex;vertical-align:middle;">
-            <img src="docs/imgs/GitHub-Mark-64px.png" id="gh-black" style="height:15pt;padding-right:5px;">
-            <img src="docs/imgs/GitHub-Mark-Light-64px.png" id="gh-white" style="height:15pt;padding-right:5px;">
-            <span> Naseri</span>
-          </div>
-        </a></li>
-        <li>
-          <a class="nav-link" id="btn-toggle"><div style="display:flex;vertical-align:middle;">
-            <span><i class="fas fa-moon" id="moon" style="font-size:14pt;padding-right:2px;"></i></span>
-            <span><i class="fas fa-sun" id="sun" style="font-size:14pt;padding-right:2px;"></i></span>
-            <span></span>  <!-- placeholder for dark/light theme toggle -->
-          </div></a>
-        </li>
-      </ul>
+
+  <header style="padding:0 0 0 0;">
+    <nav class="navbar bg-dark navbar-expand-lg navbar-dark" style="margin: 50 auto 100 auto;padding-left: auto;">
+      <a class="navbar-brand" href=""><span class="Name"><b>CPMA</b></span><span class="Family"> transfer function</span> </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#home">Overview</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#about">Inputs</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#My_skills">Results</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#publications">Paper</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#contacts">Contact</a>
+          </li>
+        </ul>
+      </div>
     </nav>
   </header>
 
+  
+      
+      <div class="container" style="height: fit-content; width: fit-content;">
+        <h1><span class="h1-line1">CPMA</span><br>transfer function</h1>
 
-  <div class="main">
+   
+      <h2>Overview</h2>
+        <div class="row">
+          <div class=" row col-lg-12">
+            This web app is designed to examine the transfer function of the CPMA.
+            The app uses data derived from tandem CPMA (TCPMA) measurements conducted by<a href="#">Naseri et al. (2023)</a>.
+              
+          </div>
+          <div class="row col-lg-12">
+            <img src="imgs/cpmaIcon.svg">
+          </div>
+        </div>
+      <div>
 
-    <h1><span class="h1-line1">CPMA</span><br>transfer function</h1>
-
-    <div class="grid-container">
-      <article class="item1">
-        <h2>Overview</h2>
-        
         <div class="container" style="height: fit-content; width: fit-content;">
-          <div class="row">
+          <div class="row d-flex justify-content-center">
             <div class=" row col-lg-12">
-              This web app is designed to examine the transfer function of the CPMA.
-              The app uses data derived from tandem CPMA (TCPMA) measurements conducted by
-              <a href="#">Naseri et al. (2023)</a>.
+              A triangular transfer function was used to approximate the CPMA transfer function and deviations
+              from the idealized triangular transfer function were determined by two factors:
+               (i) the width factor (μ), and (ii) the height factor (λ), such that a value of 1 for each
+                factor implied no deviation between the actual and theoretical triangular CPMA transfer functions.
                 
             </div>
-            <div class="row col-lg-12">
-              <img src="imgs/cpmaIcon.svg">
+            <div class="row" style="max-width:800px; display:inline"> 
+              <img  class="d-flex justify-content-center"src="imgs/triangle_tfer.svg">
             </div>
           </div>
         <div>
 
-
-          <div class="container" style="height: fit-content; width: fit-content;">
-            <div class="row d-flex justify-content-center">
-              <div class=" row col-lg-12">
-                A triangular transfer function was used to approximate the CPMA transfer function and deviations
-                from the idealized triangular transfer function were determined by two factors:
-                 (i) the width factor (μ), and (ii) the height factor (λ), such that a value of 1 for each
-                  factor implied no deviation between the actual and theoretical triangular CPMA transfer functions.
-                  
-              </div>
-              <div class="row" style="max-width:800px; display:inline"> 
-                <img  class="d-flex justify-content-center"src="imgs/triangle_tfer.svg">
-              </div>
-            </div>
-          <div>
+          <p>
+            The width factor higher than one (μ>1), indicating that the CPMA transfer function is narrower than
+            the idealized triangular transfer function.
+          </p>
+  
+          <p>
+            These two factors are calculated from multivariate nonlinear functions fitted to TCMPA measurements
+            by indicating either CPMA mass set point (m<sub>p</sub>), CPMA resolution (R<sub>m</sub>),
+            and CPMA flow rate (Q) or CPMA rotational speed (ω) and voltage (V).
+            In case that the CPMA flow rate is set to 0.3, 1.5, 4 or 8 LPM, the loss factor is calculated directly
+            from fitting function derived for the corresponding CPMA flow rate, whereas for other flow rates,
+            the loss factor is obtained from simple interpolation between the closest lower and higher CPMA flow rates.
+          </p>
 
 
-        <p>
-          The width factor higher than one (μ>1), indicating that the CPMA transfer function is narrower than
-          the idealized triangular transfer function.
-        </p>
 
-        <p>
-          These two factors are calculated from multivariate nonlinear functions fitted to TCMPA measurements
-          by indicating either CPMA mass set point (m<sub>p</sub>), CPMA resolution (R<sub>m</sub>),
-          and CPMA flow rate (Q) or CPMA rotational speed (ω) and voltage (V).
-          In case that the CPMA flow rate is set to 0.3, 1.5, 4 or 8 LPM, the loss factor is calculated directly
-          from fitting function derived for the corresponding CPMA flow rate, whereas for other flow rates,
-          the loss factor is obtained from simple interpolation between the closest lower and higher CPMA flow rates.
-        </p>
-        
-      </article>
-<!--  Division for Inputs, Start -->
-      <article class="item1" > <!-- style="width:500px;"-->
+          <!--  Division for Inputs, Start -->
         <p></p>
         <h2>Inputs</h2>
         <p></p>
@@ -181,7 +154,7 @@
               <div class="control" style="width:300px;">
                 <div class="control-label" id="variableName1"> Mass set point (m<sub>p</sub>)<span class="control-unit"> fg </span>
                 </div> <br>
-                <input class="textBoxInput textinput slide control-unit" id="input1" type="number" min="0.05" max="100" value="0.01" ><br>
+                <input class="textBoxInput textinput slide control-unit" id="input1" type="number" min="0.05" max="100" value="0.1" ><br>
                 <span class="control-unit" id="rangeLabel1">m* ∈ [ 0.05 , 100 ] fg</span>
                 <p></p>
               </div>
@@ -201,6 +174,14 @@
                 </div> <br>
                 <input class=" textBoxInput textinput slide control-unit" type="number" style="width:100px" id="input3" min="0.3" max="8" value="1.5" step="0.1" ><br> <!--"qRangeValue.innerText=this.value"-->
                 <span class="control-unit"> Q ∈ [ 0.3 , 8 ] LPM</span>
+                  <p></p>
+              </div>
+
+              <div class="control" style="width:300px;">
+                <div class="control-label" id="variableName8"> particle mass <span class="control-unit"> fg </span>
+                </div> <br>
+                <input class=" textBoxInput textinput slide control-unit" type="number" style="width:100px" id="input4" min="0.05" max="100" value="0.1" step="0.1" ><br> <!--"qRangeValue.innerText=this.value"-->
+                <span class="control-unit">  m<sub>p</sub> ∈ [-∞, +∞] fg</span>
                   <p></p>
               </div>
 
@@ -245,104 +226,146 @@
           R<sub>m</sub> = <span class="control-unit" id="RmValue2"  style="width:300px;">-</span>
         </div>
 
+  
 
-      </article>
-
-
-      <article class="item1" >
         <h2> Estimated adjustable factors</h2>
-        <!-- 
-                  The width  <div style="display:inline;" id="no_out"></div> simulations
-           -->
-                  <div class="outWidth">
-                    <!-- <p></p>
-                    <div class="control-label">Width factor (μ):</div> <br>
-                    <p></p>
-                    <span class="control-unit">[μ<sub>min</sub>, μ<sub>max</sub>] : </span><div class="textoutput control-unit" id="mu" style="display:inline;"">-</div>
-                  </div>
-                  <p></p>
-                  <div class="outHeight">
-                    <div class="control-label">Height factor (λ):</div> <br>
-                    <p></p>
-                    <span class="control-unit">[λ<sub>min</sub>, λ<sub>max</sub>] : </span><div class="textoutput control-unit" id="lambda" style="display:inline;"">-</div>
-                    
-                    <p></p>
-                    <div id="my_dataviz"></div>
-                    <p></p>
-                    <div id="my_legend"></div> -->
+
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-6 d-flex justify-content-center" id="my_dataviz"></div>
+
+            <div class="col-lg-6 d-flex justify-content-center" id="my_legend"></div>
+          </div>
+        </div>
 
 
-                  <div class="container">
-                    <div class="row">
-                      <div class="col-lg-6 d-flex justify-content-center" id="my_dataviz"></div>
 
-                      <div class="col-lg-6 d-flex justify-content-center" id="my_legend"></div>
-                    </div>
-                  </div>
+        <div class="container" style="margin-top:10%">
+
+          <div class="row" style="margin-left:10%">
+            <div class="col-lg-4 "style="margin-top:10%">
+              <div class="outHeight control-label">Transmission Eff. (Ω<sub>CPMA</sub>):<div class="textoutput control-unit" id="Omega_CPMA" style="display:inline;"">-</div></div>
+            </div>
+
+            <div class="col-lg-4" style="margin-top:10%">
+              <div class="outHeight control-label">Height factor (λ):<div class="textoutput control-unit" id="lambda" style="display:inline;"">-</div></div>
+            </div>
+
+            <div class="col-lg-4" style="margin-top:10%">
+              <div class="outWidth control-label ">Width factor (μ):<div class="textoutput control-unit" id="mu" style="display:inline;">-</div><div></div>
+            </div>
+          </div>
+        </div>
 
 
-      </article>
-    </div>
 
-  </div>
 
+        
+        
+       
+          <!-- <div class="row col-sm-4" style="margin-top:20%">
+          
+        <div>
+          
+          <div class="row col-sm-4" style="margin-top:5%">
+            
+            
+ 
+        <div>
+          
+        <div class="row col-sm-4" style="margin-top:5%">
+       
+       
+        </div> -->
 
   <!-- Footer -->
-  <div class="footer">
-    <div class="main">
-      <div class="footer-sub">
-        <p style="font-size: 1.6rem;">
-          Created by
-          <a href="mailto:arash@ualberta.ca">Arash Naseri</a>
-          at the University of Alberta. <br>
-          Open source code and data for this web app is available at 
-          <a href="" style="display:inline-block;">XXXXXXXXXXX</a> .
-        </p>
-      </div>
+  <!-- <div class="footer">
+
+    <div class="footer-sub">
+      <p style="font-size: 1.2rem;">
+        Created by
+        <a href="mailto:arash@ualberta.ca">Arash Naseri</a>
+        at the University of Alberta. <br>
+        Open source code and data for this web app is available at 
+        <a href="" style="display:inline-block;">XXXXXXXXXXX</a> .
+      </p>
     </div>
+
+</div> -->
+
+
+<!-- footer section -->
+<section class="reveal" id="contacts" style="height:25rem; background-color: #151719;  padding: 7% 15% 7% 15%;
+width:100%; margin-top:10rem;">
+
+<div style="display: flex; align-items: center; justify-content: center;">
+  Copyright<p style="color:#6a6d73 " id="Copyright">...</p>
+</div><br>
+
+  <div style="display: flex; align-items: center; justify-content: center;">
+    <p style="color:#6a6d73 ">Created by <a href="mailto:arash@ualberta.ca"> Arash Naseri</a> at the University of Alberta.
+      Open source code and data for this web app is available at 
+      <a href="" style="display:inline-block;">XXXXXXXXXXX</a> All Rights Reserved.</p>
+
+
   </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   
 
   <!-- Read in data as a script -->
 
   <script src="js/index.js"></script>
+  <script>
 
+    // For dark mode.
+    const btn = document.querySelector("#btn-toggle");
+    btn.addEventListener("click", function () {
+      // Toggle dark theme.
+      dark = !dark;
+    
+      toggleNight();  // apply theme
+      scrollFunction();
+    })
+    
+    // When the user scrolls down 50px from the top of the document, reformat header.
+    window.onscroll = function() {
+      scrollFunction()
+    };
+    function scrollFunction() {
+      if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 60) {
+        if (dark) {
+          document.getElementById("header").style.borderBottom = "1px #000 solid";
+        } else {
+          document.getElementById("header").style.borderBottom = "1px #DDD solid";
+        }
+      } else {
+        if (dark) {
+          document.getElementById("header").style.borderBottom = "1px #242526 solid";
+        } else {
+          document.getElementById("header").style.borderBottom = "1px #FCFCFC solid";
+        }
+      }
+    }
+    scrollFunction();  // initialize
+    
+    </script>
 
 </body>
-<script>
 
-// For dark mode.
-const btn = document.querySelector("#btn-toggle");
-btn.addEventListener("click", function () {
-  // Toggle dark theme.
-  dark = !dark;
-
-  toggleNight();  // apply theme
-  scrollFunction();
-})
-
-// When the user scrolls down 50px from the top of the document, reformat header.
-window.onscroll = function() {
-  scrollFunction()
-};
-function scrollFunction() {
-  if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 60) {
-    if (dark) {
-      document.getElementById("header").style.borderBottom = "1px #000 solid";
-    } else {
-      document.getElementById("header").style.borderBottom = "1px #DDD solid";
-    }
-  } else {
-    if (dark) {
-      document.getElementById("header").style.borderBottom = "1px #242526 solid";
-    } else {
-      document.getElementById("header").style.borderBottom = "1px #FCFCFC solid";
-    }
-  }
-}
-scrollFunction();  // initialize
-
-</script>
 
 </html>
