@@ -1,4 +1,4 @@
-% tri_tfer model evaluates the actual CPMA transfer function using a triangular model.
+% empirical-cpma-tfer model evaluates the actual CPMA transfer function using a triangular model.
 % Author: Arash Naseri, 2023-01-29
 % 
 % Inputs:
