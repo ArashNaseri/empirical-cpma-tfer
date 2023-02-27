@@ -1,7 +1,6 @@
-# Empirical CPMA transfer function
+# Empirical CPMA Transfer Function
 This is a source code for a web-app that examine the actual transfer function for centrifugal particle mass analyzers.
 
-# CPMA Transfer Function Analyzer
 
 ## Overview
 This web application is created to analyze the transfer function of the CPMA. It utilizes data obtained from tandem CPMA (TCPMA) measurements carried out by Naseri et al. (2023).
@@ -18,26 +17,24 @@ CPMA dimensions (Cambustion Ltd)
 - Outer radius r2: 6.1 cm
 - Length L: 20 cm
 - ω2/ω1: 0.9696
+- Angular speed ω rad/s or RPM
+- Voltage in V
+- Mass setpoint (m*) in fg
+- Resolution Rm:
 
 Set point mode
 - Mass + Resolution + flow rate
-    - Mass set point (mp) fg: 0.1
-    - m* ∈ [0.05, 100] fg
-    - Resolution (Rm): 5
-    - Rm ∈ [2, 15]
-    - Flow rate (Q) LPM: 0.3
-    - Q ∈ [0.3, 8] LPM
-    - Particle mass fg: 0.1
-    - mp ∈ [-∞, +∞] fg
+    - Mass set point (m_p) in fg
+    - m* ∈ [0.05, 100] in fg
+    - Resolution (Rm) ∈ [2, 15]
+    - Flow rate (Q) ∈ [0.3, 8] LPM
+    - Particle mass (mp) ∈ [-∞, +∞] fg
 
 Particle properties
-- Dm: 2.48
-- ρeff,100 kg/m3: 510
-- Charge state z:
-- Angular speed ω rad/s: ω = RPM
-- Voltage V: 8 V
-- Mass setpoint m*: fg
-- Resolution Rm:
+- Mass mobility exponent (Dm)
+- Effective density (ρeff,100) in kg/m3
+- Number of charge state (z)
+
 
 ## Results
-The application provides the transfer function and loss factor of the CPMA based on the given inputs.
+The empirical CPMA transfer function is derived by incorporating width and height factors into an idealized triangular model, based on the provided inputs.
