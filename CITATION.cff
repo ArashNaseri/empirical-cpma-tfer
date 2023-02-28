@@ -1,0 +1,39 @@
+cff-version: 1.0.0
+message: "If you use this software, please cite it as below."
+author:
+- family-names: "Naseri"
+  given-names: "Arash"
+  orcid: "https://orcid.org/0000-0002-1493-6761"
+title: "Empirical CPMA transfer function GUI"
+version: 1.0.0
+doi: 10.5281/zenodo.7686025
+date-released: 2023-02-28
+url: "https://github.com/ArashNaseri/empirical-cpma-tfer"
+
+preferred-citation:
+  type: article
+  authors:
+  - family-names: "Naseri"
+    given-names: "Arash"
+    orcid: "https://orcid.org/0000-0002-1493-6761"
+    
+  - family-names: "Tyler J. "
+    given-names: "Johnson"
+    orcid: "https://orcid.org/0000-0002-3641-0381"
+    
+   - family-names: "Greg"
+    given-names: "Smallwood"
+    orcid: 
+  - family-names: "Jason "
+    given-names: "Olfert"
+    orcid: "https://orcid.org/0000-0002-9681-5428"
+    
+  doi: "under review"
+  journal: "Journal of Aerosol Science and Technology"
+  month: XX
+  start: XX # First page number
+  end: XX # Last page number
+  title: "Measurement of the centrifugal particle mass analyzer transfer function"
+  issue: XX
+  volume: XX
+  year: 2021
