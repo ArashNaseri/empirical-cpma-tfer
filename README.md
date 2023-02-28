@@ -1,3 +1,4 @@
+[![DOI](https://zenodo.org/badge/585446654.svg)](https://zenodo.org/badge/latestdoi/585446654)
 # Empirical CPMA Transfer Function
 This is a source code for a web-app that examine the empirical transfer function for centrifugal particle mass analyzers.
 
