@@ -27,7 +27,6 @@ div.main {
   width: 95%;
 }
 
-
 /* For gridding */
 .grid-container {
   display: grid;
@@ -88,7 +87,7 @@ h1 {
 }
 
 .h1-line1 {
-  color: #8CE6CD;
+  color: #FC8B5E;
   font-size: 35pt;
   line-height: 36pt;
   font-weight: 400;
@@ -112,8 +111,6 @@ h2 {
   max-width: 650px;
   font-size: 10pt;
 }
-
-
 
 /* For control components */
 div.control {
@@ -153,12 +150,12 @@ div.control {
 }
 
 .textinput:hover {
-  border: 1.5px solid #8CE6CD;
+  border: 1.5px solid #FC8B5E;
   box-shadow: 0px 0px 4px #AAAAAA;
 }
 
 .textinput:focus {
-  border: 1.5px solid #8CE6CD;
+  border: 1.5px solid #FC8B5E;
   box-shadow: 0px 0px 2px #AAAAAA;
 }
 
@@ -176,7 +173,7 @@ select {
 }
 
 select:hover {
-  border: 1.5px solid #8CE6CD;
+  border: 1.5px solid #FC8B5E;
   box-shadow: 0px 0px 2px #AAAAAA;
 }
 
@@ -192,7 +189,7 @@ div.out {
   vertical-align: text-top;
   margin-bottom: 12px;
   width: 120px;
-  color: #8CE6CD;
+  color: #FC8B5E;
   font-size: 24pt;
   line-height: 24pt;
 }
@@ -225,7 +222,7 @@ div.out {
 
 /*  For navigation/header */
 /* CSS for header */
-h/* CSS for header */
+/* CSS for header */
 /* CSS for header */
 header {
   position: fixed;
@@ -243,7 +240,7 @@ header nav a {
   background: #222529;
   padding: 10px 20px;
   font-size: 2rem;
-  color: #ffff00;
+  color: #FC8B5E;
   border-radius: 5px;
   letter-spacing: 0.5px;
 }
@@ -256,10 +253,6 @@ header nav a.active {
   letter-spacing: 2px;
 }
 
-
-
-
-
 body.dark-theme header {
   background-color: var(--background-color);
   border-bottom: var(--background-color) 1px solid;
@@ -271,8 +264,8 @@ body.dark-theme header {
   font-size: 16pt;
   text-decoration: none;
   padding: 18px 10px 18px 5%;
-  /* text-shadow: 0px 0px 2px #48DEB1; */
-  text-shadow: -0.8px 0.8px 0px #48DEB1;
+  /* text-shadow: 0px 0px 2px #FC8B5E; */
+  text-shadow: -0.8px 0.8px 0px #FC8B5E;
   line-height: 13pt;
 }
 body.dark-theme #header-logo {
@@ -312,7 +305,7 @@ margin: 0% 0% 0% 0%;
 }
 
 .nav-link:hover {
-  color: #48DEB1;
+  color: #FC8B5E;
 }
 
  #header-logo {
@@ -321,8 +314,8 @@ margin: 0% 0% 0% 0%;
   font-size: 16pt;
   text-decoration: none;
   padding: 18px 10px 18px 5%;
-  /* text-shadow: 0px 0px 2px #48DEB1; */
-  text-shadow: -0.8px 0.8px 0px #48DEB1;
+  /* text-shadow: 0px 0px 2px #FC8B5E; */
+  text-shadow: -0.8px 0.8px 0px #FC8B5E;
   line-height: 13pt;} 
 
 
@@ -385,9 +378,9 @@ body.dark-theme .plot-fill {
 body.dark-theme .diff-line {
   stroke: white;
 }
-/* html, body {
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  padding: 0;
+
+a {
+  padding: 0%;
+  margin: 0%;
+  display: inline;
 }

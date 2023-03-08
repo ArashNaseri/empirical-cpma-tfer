@@ -10,9 +10,12 @@
 
   <link href="https://fonts.googleapis.com/css?family=Indie+Flower|Lobster" rel="stylesheet">
   <script src="https://kit.fontawesome.com/ba6e6370a1.js" crossorigin="anonymous"></script>
-   <!-- Load bootstrap -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  <!-- Load bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
 
   <!-- Load styles -->
   <link href="style.css" rel="stylesheet">
@@ -36,7 +39,8 @@
 
   <header style="padding:0 0 0 0;">
     <nav class="navbar bg-dark navbar-expand-lg navbar-dark" style="margin: 50 auto 100 auto;padding-left: auto;">
-      <a class="navbar-brand" href=""><span class="Name"><b>Empirical CPMA</b></span><span class="Family"> transfer function</span> </a>
+      <a class="navbar-brand" href=""><span class="Name"><b>Empirical CPMA</b></span><span class="Family"> transfer
+          function</span> </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -66,336 +70,377 @@
 
   <div style="height: fit-content; width: fit-content;">
     <h1 style="padding-left: 5%;padding-right: 5%;">
-      <span class="h1-line1">Empirical CPMA</span>
-      <br>transfer function
+      <span class="h1-line1"></span>
+      <br>Empirical CPMA transfer function
     </h1>
 
-  <h2 id="overview" style="padding-left: 5%;padding-right: 5%;">
-    Overview
-  </h2>
-  
-  <div class=" row col-lg-12" style="padding-left: 5%;padding-right: 5%; margin-left: 0%;">
-    This web application is created to analyze the transfer function of the CPMA. It utilizes data obtained from tandem CPMA (TCPMA) measurements carried out by<a href="####">Naseri et al. (2023)</a>.
-      
-  </div>
-  <div class="row col-lg-12" style="padding-left: 5%;padding-right: 5%; margin-left: 0%;">
-    <img src="imgs/cpmaIcon.svg">
-  </div>
-  <div>
-    <div style="height: fit-content; width: fit-content;">
-      <div class="row d-flex justify-content-center">
-        <div class=" row col-lg-12" style="padding-left: 5%;padding-right: 5%; margin-left: 0%;">
-          To estimate the transfer function and discrepancies of the CPMA, 
-          a triangular transfer function was employed. Two factors,
-           namely the width factor (μ) and height factor (𝜂),
+    <h2 id="overview" style="padding-left: 5%;padding-right: 5%;">
+      Overview
+    </h2>
+
+    <div class=" row col-lg-12" style="padding-left: 5%;padding-right: 5%; margin-left: 0%;">
+      This web application is created to analyze the transfer function of the CPMA. It utilizes data obtained from
+      tandem CPMA (TCPMA) measurements carried out by<a style="width: fit-content; padding-left: 0%;" href="####">Naseri
+        et al. (2023)</a>.
+
+    </div>
+    <div class="row col-lg-12" style="padding-left: 5%;padding-right: 5%; margin-left: 0%;">
+      <img style="max-width: 100%;" src="imgs/cpmaIcon.svg">
+    </div>
+    <div>
+      <div style="height: fit-content; width: fit-content;">
+        <div class="row d-flex justify-content-center">
+          <div class=" row col-lg-12" style="padding-left: 5%;padding-right: 5%; margin-left: 0%;">
+            To estimate the transfer function and discrepancies of the CPMA,
+            a triangular transfer function was employed. Two factors,
+            namely the width factor (μ) and height factor (𝜂),
             were utilized to determine any deviations from the idealized
-             triangular transfer function. A value of 1 for each factor indicated
-              that there were no discrepancies between the actual and theoretical 
-              triangular CPMA transfer functions.
-            
+            triangular transfer function. A value of 1 for each factor indicated
+            that there were no discrepancies between the actual and theoretical
+            triangular CPMA transfer functions.
+
+          </div>
+          <div class="row" style="max-width:800px; display:inline">
+            <img class="d-flex justify-content-center" src="imgs/triangle_tfer.svg">
+          </div>
         </div>
-        <div class="row" style="max-width:800px; display:inline"> 
-          <img  class="d-flex justify-content-center"src="imgs/triangle_tfer.svg">
-        </div>
-      </div>
-    <div>
+        <div>
 
-      <p style="padding-left: 5%;padding-right: 5%; margin-left: 0%;">
-        If the width factor is greater than one (μ>1), it signifies that the CPMA transfer function is narrower than the idealized triangular transfer function.
-      <br>
-      These two factors are determined through multivariate nonlinear functions that are fitted to TCPMA
-       measurements. The functions take into account either the CPMA mass set point (m<sub>p</sub>), 
-       CPMA resolution (R<sub>m</sub>), and CPMA flow rate (Q), or the CPMA rotational speed (ω) and 
-       voltage (V). If the CPMA flow rate is set to 0.3, 1.5, 4 or 8 LPM, the loss factor is directly
-        calculated using the fitting function corresponding to the relevant CPMA flow rate. However, 
-        for other flow rates, the loss factor is derived through simple interpolation between the 
-        nearest lower and higher CPMA flow rates.      </p>
+          <p style="padding-left: 5%;padding-right: 5%; margin-left: 0%;">
+            If the width factor is greater than one (μ>1), it signifies that the CPMA transfer function is narrower than
+            the idealized triangular transfer function.
+            <br>
+            These two factors are determined through multivariate nonlinear functions that are fitted to TCPMA
+            measurements. The functions take into account either the CPMA mass set point (m<sub>p</sub>),
+            CPMA resolution (R<sub>m</sub>), and CPMA flow rate (Q), or the CPMA rotational speed (ω) and
+            voltage (V). If the CPMA flow rate is set to 0.3, 1.5, 4 or 8 LPM, the loss factor is directly
+            calculated using the fitting function corresponding to the relevant CPMA flow rate. However,
+            for other flow rates, the loss factor is derived through simple interpolation between the
+            nearest lower and higher CPMA flow rates.
+          </p>
 
 
 
-      <!--  Division for Inputs, Start -->
-    <p></p>
-    <h2 id="Inputs" style="padding-left: 5%;padding-right: 5%; margin-left: 0%;">Inputs</h2>
-    <p></p>
+          <!--  Division for Inputs, Start -->
+          <p></p>
+          <h2 id="Inputs" style="padding-left: 5%;padding-right: 5%; margin-left: 0%;">Inputs</h2>
+          <p></p>
 
-    <h3 style="padding-left: 5%;padding-right: 5%; margin-left: 0%;">CPMA dimensions (Cambustion Ltd)</h3>
-    <p></p>
-
-
-    <div>
-      <div class="row" style="padding-left: 5%;padding-right: 5%; margin-left: 0%;">
-
-        <div class="control col-lg-3 col-sm-6">
-          <span class="control-label">Inner radius r<sub>1</sub>: </span><span class="control-unit"> 6cm</span>
-        </div>
-
-        <div class="control col-lg-3 col-sm-6">
-          <span class="control-label">Outer radius r<sub>2</sub>: </span><span class="control-unit"> 6.1 cm</span>
-        </div>
-
-        <div class="control col-lg-3 col-sm-6">
-          <span class="control-label">Length L: </span><span class="control-unit"> 20 cm</span>
-        </div>
-
-        <div class="control col-lg-3 col-sm-6">
-          <span class="control-label">  ω<sub>2</sub>/ω<sub>1</sub>: </span><span class="control-unit"> 0.9696</span>
-        </div>
-
-      </div>
-    </div>
-
-    <br>
+          <h3 style="padding-left: 5%;padding-right: 5%; margin-left: 0%;">CPMA dimensions (Cambustion Ltd)</h3>
+          <p></p>
 
 
-    <p></p>
-  <h3 style="padding-left: 5%;padding-right: 5%; margin-left: 0%;">Set point mode</h3> <br>
+          <div>
+            <div class="row" style="padding-left: 5%;padding-right: 5%; margin-left: 0%;">
 
-  <!-- Add sliders etc. -->
+              <div class="control col-lg-3 col-sm-6">
+                <span class="control-label">Inner radius r<sub>1</sub>: </span><span class="control-unit"> 6cm</span>
+              </div>
 
-  <div class="control" id="select-div" style="width:100%; padding-left: 5%;padding-right: 5%; margin-left: 0%;">
-    <select id="setpoint-mode" class="control-unit"  onchange="update()">
-      <option id="option1"> Mass + Resolution + flow rate</option>
-      <option id="option2" >Angular speed + Voltage + flow rate</option>
-    </select> 
-  </div>
+              <div class="control col-lg-3 col-sm-6">
+                <span class="control-label">Outer radius r<sub>2</sub>: </span><span class="control-unit"> 6.1 cm</span>
+              </div>
 
-  <br>
+              <div class="control col-lg-3 col-sm-6">
+                <span class="control-label">Length L: </span><span class="control-unit"> 20 cm</span>
+              </div>
 
-  <div style="padding-left: 5%;padding-right: 5%; margin-left: 0%;">
-    <div class="control" style="width:300px;">
-      <div class="control-label" id="variableName1"> Mass set point (m<sub>p</sub>)<span class="control-unit"> fg </span>
-      </div> <br>
-      <input class="textBoxInput textinput slide control-unit" id="input1" type="number" min="0.05" max="100" value="0.1" ><br>
-      <span class="control-unit" id="rangeLabel1">m* ∈ [ 0.05 , 100 ] fg</span>
-      <p></p>
-    </div>
+              <div class="control col-lg-3 col-sm-6">
+                <span class="control-label"> ω<sub>2</sub>/ω<sub>1</sub>: </span><span class="control-unit">
+                  0.9696</span>
+              </div>
 
-    <div class="control" style="width:300px;">
-      <div class="control-label" id="variableName2">Resolution (R<sub>m</sub>)
-      </div> <br>
-      <input class="textBoxInput textinput slide" style="width:100px control-unit"  id="input2" type="number" min="2" max="15"  step="0.1" value="5" ><br>  <!--"rmRangeValue.innerText=this.value"-->
-      <span class="control-unit" id="rangeLabel2">R<sub>m</sub> ∈ [ 2 , 15 ]</span>
-        <p></p>
-    </div>
-
-    
-
-    <div class="control" style="width:300px;">
-      <div class="control-label" id="variableName3">flow rate (Q)<span class="control-unit"> LPM </span>
-      </div> <br>
-      <input class=" textBoxInput textinput slide control-unit" type="number" style="width:100px" id="input3" min="0.3" max="8" value="0.3" step="0.1" ><br> <!--"qRangeValue.innerText=this.value"-->
-      <span class="control-unit"> Q ∈ [ 0.3 , 8 ] LPM</span>
-        <p></p>
-    </div>
-
-    <div class="control" style="width:300px;">
-      <div class="control-label" id="variableName8"> particle mass <span class="control-unit"> fg </span>
-      </div> <br>
-      <input class=" textBoxInput textinput slide control-unit" type="number" style="width:100px" id="input4" min="0.05" max="1000" value="0.1" step="0.5" ><br> <!--"qRangeValue.innerText=this.value"-->
-      <span class="control-unit">  m<sub>p</sub> ∈ [-∞, +∞] fg</span>
-        <p></p>
-    </div>
-
-  </div>
-
-
-  <h3 style="padding-left: 5%;padding-right: 5%; margin-left: 0%;">
-    Particle properties 
-  </h3> 
-  <br>
-
-
-
-  <div style="padding-bottom: 5%;">
-    <div class="row" style="padding-left: 5%;padding-right: 5%; margin-left: 0%;">
-
-      <div class="control col-lg-4 col-sm-6">
-          <span class="control-label">D<sub>m</sub></span>
-          <input class="textinput" id="Dmnum" type="number" min="0.1" max="4" step="0.05" value="2.48" >
-      </div>
-
-      <div class="control col-lg-4 col-sm-6">
-        <span class="control-label">ρ<sub>eff,100</sub></span>
-        <span class="control-unit">kg/m<sup>3</sup></span>
-        <input class="textinput" id="rhonum" type="number" min="20" max="1e4" step="20" value="510" >
-      </div>
-
-      <div class="control col-lg-4 col-sm-6">
-        <span class="control-label" style="padding-top: 10px;"> Charge state z :<span class="control-unit">1</span>
-      </div>
-
-
-    </div>
-  </div>
-
-
-
-
-
-  <div style="padding-bottom: 5%;">
-    <div class="row" style="padding-left: 5%;padding-right: 5%; margin-left: 0%;">
-
-      <div class="control col-lg-3 col-sm-6">
-        <span class="control-label" id="variableName4"  style="width:300px;">Angular speed </span>
-        ω = <span class="control-unit" id="Wvalue"  style="width:300px;">-</span> <span class="control-unit" >rad/s</span> <br>
-        ω = <span class="control-unit" id="Wrpmvalue"  style="width:300px;">-</span> <span class="control-unit" >RPM</span>
-      </div>
-
-      <div class="control col-lg-3 col-sm-6">
-        <span class="control-label" id="variableName5"  style="width:300px;">Voltage </span>
-        V = <span class="control-unit" id="Vvalue"  style="width:300px;">-</span> <span class="control-unit">V</span>
-      </div>
-
-      <div class="control col-lg-3 col-sm-6">
-        <span class="control-label" id="variableName6"  style="width:300px;">Mass setpoint </span>
-        m<sup>*</sup> = <span class="control-unit" id="mStarValue2"  style="width:300px;">-</span><span class="control-unit">fg</span>
-      </div>
-
-      <div class="control col-lg-3 col-sm-6">
-        <span class="control-label" id="variableName7"  style="width:300px;">Resolution </span>
-        R<sub>m</sub> = <span class="control-unit" id="RmValue2"  style="width:300px;">-</span>
-      </div>
-
-
-    </div>
-  </div>
-
-
-
-
-
-
-<h2 id="Results" style="padding-left: 5%;padding-right: 5%; margin-left: 0%;">
-  Results
-</h2>
-
-<div class="reveal" style="padding-left: 5%;padding-right: 5%; margin-left: 0%;">
-  <div class="row">
-    <div class="col-lg-6 d-flex justify-content-center" id="my_dataviz"></div>
-    <div class="col-lg-6 d-flex justify-content-center" id="my_legend"></div>
-  </div>
-</div>
-<!-- padding-left: 5%;padding-right: 5%; margin-left: 0%; -->
-<div class="row" style="margin-left:10%; margin-bottom:10%;">
-  <div class="col-lg-4 "style="margin-top:10%">
-    <div class="outHeight control-label">
-      Transmission Eff. (Ω<sub>CPMA</sub>):
-      <div class="textoutput control-unit" id="Omega_CPMA" style="display:inline;"">-</div>
-    </div>
-  </div>
-
-  <div class="col-lg-4" style="margin-top:10%">
-    <div class="outHeight control-label">Height factor (λ):
-      <div class="textoutput control-unit" id="lambda" style="display:inline;"">-</div>
-    </div>
-  </div>
-
-
-  <div class="col-lg-4" style="margin-top:10%">
-    <div class="outWidth control-label">Width factor (μ):
-      <div class="textoutput control-unit" id="mu" style="display:inline;"">-</div>
-    </div>
-  </div>
-</div>
-
-
-
-  <div class="reveal" id="contacts" style="background-color: #151719;">
-
-    <footer class="text-white text-center text-lg-start">
-      <!-- Grid container -->
-      <div class="p-4">
-        <!--Grid row-->
-        <div class="row mt-4">
-          <!--Grid column-->
-          <div class="col-lg-12 col-md-12 mb-12 mb-md-0">
-            <h5 class="text-uppercase mb-4">Contact me</h5>
-  
-            <p style="color:#6a6d73 ">
-              Created by Arash Naseri at the University of Alberta. 
-              Open source code and data for this web app is available at 
-              <a class="text-white" href="https://github.com/ArashNaseri/empirical-cpma-tfer" >https://github.com/ArashNaseri/empirical-cpma-tfer</a>. 
-            </p>
-  
-   
-   
-  
-          <!--Grid column-->
-          <div class="col-lg-12 col-md-12 mb-12 mb-md-0" style="color:#6a6d73 ">
-  
-            <ul class="fa-ul" style="margin-left: 1.65em; text-align: justify;">
-              <li class="mb-3">
-                <span class="fa-li"><i class="fas fa-home"></i></span><span class="ms-2" style="text-align:left">5-1M, Mechanical Engineering Building, North Campus, University of Alberta, Edmonton, Alberta, Canada, T6G 2G.</span>
-              </li>
-              <li class="mb-3">
-                <span class="fa-li"><i class="fas fa-envelope"></i></span><a class="ms-2" href="mailto:arash@ualberta.ca" style="color:white">arash@ualberta.ca</a>
-              </li>
-            </ul>
+            </div>
           </div>
 
-      </div>
-      <!-- Grid container -->
-  
-      <!-- Copyright -->
-      <div class="text-center p-3" style="color:#6a6d73 ">
-        <span>Designed and powered by </span><a class="text-white" href="https://arashnaseri.github.io/personal_webpage/">Arash Naseri. </a>
-        <br><span style="color:#6a6d73 " id="Copyright">...</span> All Rights Reserved.
-      </div>
-      <!-- Copyright -->
-    </footer>
-  
+          <br>
+
+
+          <p></p>
+          <h3 style="padding-left: 5%;padding-right: 5%; margin-left: 0%;">Set point mode</h3> <br>
+
+          <!-- Add sliders etc. -->
+
+          <div class="control" id="select-div" style="width:100%; padding-left: 5%;padding-right: 5%; margin-left: 0%;">
+            <select id="setpoint-mode" class="control-unit" onchange="update()">
+              <option id="option1"> Mass + Resolution + flow rate</option>
+              <option id="option2">Angular speed + Voltage + flow rate</option>
+            </select>
+          </div>
+
+          <br>
+
+          <div style="padding-left: 5%;padding-right: 5%; margin-left: 0%;">
+            <div class="control" style="width:300px;">
+              <div class="control-label" id="variableName1"> Mass set point (m<sub>p</sub>)<span class="control-unit">
+                  fg </span>
+              </div> <br>
+              <input class="textBoxInput textinput slide control-unit" id="input1" type="number" min="0.05" max="100"
+                value="0.1"><br>
+              <span class="control-unit" id="rangeLabel1">m* ∈ [ 0.05 , 100 ] fg</span>
+              <p></p>
+            </div>
+
+            <div class="control" style="width:300px;">
+              <div class="control-label" id="variableName2">Resolution (R<sub>m</sub>)
+              </div> <br>
+              <input class="textBoxInput textinput slide" style="width:100px control-unit" id="input2" type="number"
+                min="2" max="15" step="0.1" value="5"><br> <!--"rmRangeValue.innerText=this.value"-->
+              <span class="control-unit" id="rangeLabel2">R<sub>m</sub> ∈ [ 2 , 15 ]</span>
+              <p></p>
+            </div>
+
+
+
+            <div class="control" style="width:300px;">
+              <div class="control-label" id="variableName3">flow rate (Q)<span class="control-unit"> LPM </span>
+              </div> <br>
+              <input class=" textBoxInput textinput slide control-unit" type="number" style="width:100px" id="input3"
+                min="0.3" max="8" value="0.3" step="0.1"><br> <!--"qRangeValue.innerText=this.value"-->
+              <span class="control-unit"> Q ∈ [ 0.3 , 8 ] LPM</span>
+              <p></p>
+            </div>
+
+            <div class="control" style="width:300px;">
+              <div class="control-label" id="variableName8"> particle mass <span class="control-unit"> fg </span>
+              </div> <br>
+              <input class=" textBoxInput textinput slide control-unit" type="number" style="width:100px" id="input4"
+                min="0.05" max="1000" value="0.1" step="0.5"><br> <!--"qRangeValue.innerText=this.value"-->
+              <span class="control-unit"> m<sub>p</sub> ∈ [-∞, +∞] fg</span>
+              <p></p>
+            </div>
+
+          </div>
+
+
+          <h3 style="padding-left: 5%;padding-right: 5%; margin-left: 0%;">
+            Particle properties
+          </h3>
+          <br>
+
+
+
+          <div style="padding-bottom: 5%;">
+            <div class="row" style="padding-left: 5%;padding-right: 5%; margin-left: 0%;">
+
+              <div class="control col-lg-4 col-sm-6">
+                <span class="control-label">D<sub>m</sub></span>
+                <input class="textinput" id="Dmnum" type="number" min="0.1" max="4" step="0.05" value="2.48">
+              </div>
+
+              <div class="control col-lg-4 col-sm-6">
+                <span class="control-label">ρ<sub>eff,100</sub></span>
+                <span class="control-unit">kg/m<sup>3</sup></span>
+                <input class="textinput" id="rhonum" type="number" min="20" max="1e4" step="20" value="510">
+              </div>
+
+              <div class="control col-lg-4 col-sm-6">
+                <span class="control-label" style="padding-top: 10px;"> Charge state z :<span
+                    class="control-unit">1</span>
+              </div>
+
+
+            </div>
+          </div>
+
+
+
+
+
+          <div style="padding-bottom: 5%;">
+            <div class="row" style="padding-left: 5%;padding-right: 5%; margin-left: 0%;">
+
+              <div class="control col-lg-3 col-sm-6">
+                <span class="control-label" id="variableName4" style="width:300px;">Angular speed </span>
+                ω = <span class="control-unit" id="Wvalue" style="width:300px;">-</span> <span
+                  class="control-unit">rad/s</span> <br>
+                ω = <span class="control-unit" id="Wrpmvalue" style="width:300px;">-</span> <span
+                  class="control-unit">RPM</span>
+              </div>
+
+              <div class="control col-lg-3 col-sm-6">
+                <span class="control-label" id="variableName5" style="width:300px;">Voltage </span>
+                V = <span class="control-unit" id="Vvalue" style="width:300px;">-</span> <span
+                  class="control-unit">V</span>
+              </div>
+
+              <div class="control col-lg-3 col-sm-6">
+                <span class="control-label" id="variableName6" style="width:300px;">Mass setpoint </span>
+                m<sup>*</sup> = <span class="control-unit" id="mStarValue2" style="width:300px;">-</span><span
+                  class="control-unit">fg</span>
+              </div>
+
+              <div class="control col-lg-3 col-sm-6">
+                <span class="control-label" id="variableName7" style="width:300px;">Resolution </span>
+                R<sub>m</sub> = <span class="control-unit" id="RmValue2" style="width:300px;">-</span>
+              </div>
+
+
+            </div>
+          </div>
+
+
+
+
+
+
+          <h2 id="Results" style="padding-left: 5%;padding-right: 5%; margin-left: 0%;">
+            Results
+          </h2>
+
+
+          <p class=" row col-lg-12" style="padding:0% 5% 0% 6%;">
+            Under the specified CPMA configuration settings, wherein the width (μ) and height (𝜂) factors of the CPMA
+            transfer
+            function are calculated as below, particles with specified mass exhibit a transmission efficiency of:
+          </p>
+
+          <div class="row" style="margin-left:10%;  margin-bottom:3%;">
+            <div class="col-lg-4 " style="margin-top:3%">
+              <div class="outHeight control-label">
+                Transmission Eff. (Ω<sub>CPMA</sub>):
+                <div class="textoutput control-unit" id="Omega_CPMA" style="display:inline;"">-</div>
+    </div>
   </div>
-  <!-- End of .container -->
+
+  <div class=" col-lg-4" style="margin-top:3%">
+                  <div class="outHeight control-label">Height factor (𝜂):
+                    <div class="textoutput control-unit" id="lambda" style="display:inline;"">-</div>
+    </div>
+  </div>
+
+
+  <div class=" col-lg-4" style="margin-top:3%">
+                      <div class="outWidth control-label">Width factor (μ):
+                        <div class="textoutput control-unit" id="mu" style="display:inline;"">-</div>
+    </div>
+  </div>
+</div>
+
+<p class=" row col-lg-12" style="padding:0% 5% 5% 6%;">
+                          The diagram below compares the empirical triangular models with the theoretical triangular,
+                          trapezoidal, and diffusion models using the CPMA
+                          configuration settings as input. The trapezoidal and diffusion models are alternative transfer
+                          functions for CPMA that were derived theoretically
+                          by Olfert and Collins (2005) and Sipkens et al. (2020), respectively, based on slightly
+                          different assumptions from the triangular transfer function. For instance,
+                          the trapezoidal model assumes the axial flow to be parabolic and forces to vary radially,
+                          while the diffusion model incorporates particle diffusion
+                          into the models. The diffusion and trapezoidal models utilized here correspond to Sipkens et
+                          al.'s (2020) study.
+
+                          </p>
+
+
+                          <div class="reveal" style="padding-left: 5%;padding-right: 5%; margin-left: 0%;">
+                            <div class="row">
+                              <div class="col-lg-6 d-flex justify-content-center" id="my_dataviz"></div>
+                              <div class="col-lg-6 d-flex justify-content-center" id="my_legend"></div>
+                            </div>
+                          </div>
+                          <footer style=" padding: 5% 5% 0% 5%;"> The code for visualizing Sipken's et al (2020) CPMA
+                            transfer function models has been adopted from <a
+                              href="https://tsipkens.github.io/tfer-pma/"
+                              style="display:inline; width: fit-content; padding-left:0.5%;">tsipkens.github.io/tfer-pma/</a>.
+                          </footer>
+                          <footer style=" padding: 0% 5% 5% 5%;"> For further insights into the trapezoidal and
+                            diffusion models, encompassing their theoretical derivations and numerical implementations,
+                            you are encouraged to read the work of
+                            <a style="padding-left: 0; width: fit-content; display:inline;"
+                              href="https://www.tandfonline.com/doi/full/10.1080/02786826.2019.1680794">Sipkens et al.'s
+                              (2020)</a>
+                          </footer>
+
+
+                          <div class="reveal" id="contacts" style="background-color: #151719;">
+
+                            <footer class="text-white text-center text-lg-start">
+                              <!-- Grid container -->
+                              <div class="p-4">
+                                <!--Grid row-->
+                                <div class="row mt-4">
+                                  <!--Grid column-->
+                                  <div class="col-lg-12 col-md-12 mb-12 mb-md-0">
+                                    <h5 class="text-uppercase mb-4">Contact me</h5>
+
+                                    <p style="color:#6a6d73 ">
+                                      Created by Arash Naseri at the University of Alberta.
+                                      Open source code and data for this web app is available at
+                                      <a class="text-white"
+                                        href="https://github.com/ArashNaseri/empirical-cpma-tfer">https://github.com/ArashNaseri/empirical-cpma-tfer</a>.
+                                    </p>
 
 
 
 
+                                    <!--Grid column-->
+                                    <div class="col-lg-12 col-md-12 mb-12 mb-md-0" style="color:#6a6d73 ">
 
+                                      <ul class="fa-ul" style="margin-left: 1.65em; text-align: justify;">
+                                        <li class="mb-3">
+                                          <span class="fa-li"><i class="fas fa-home"></i></span><span class="ms-2"
+                                            style="text-align:left">5-1M, Mechanical Engineering Building, North Campus,
+                                            University of Alberta, Edmonton, Alberta, Canada, T6G 2G.</span>
+                                        </li>
+                                        <li class="mb-3">
+                                          <span class="fa-li"><i class="fas fa-envelope"></i></span><a class="ms-2"
+                                            href="mailto:arash@ualberta.ca" style="color:white">arash@ualberta.ca</a>
+                                        </li>
+                                      </ul>
+                                    </div>
 
+                                  </div>
+                                  <!-- Grid container -->
 
+                                  <!-- Copyright -->
+                                  <div class="text-center p-3" style="color:#6a6d73 ">
+                                    <span>Designed and powered by </span><a class="text-white"
+                                      href="https://arashnaseri.github.io/personal_webpage/">Arash Naseri. </a>
+                                    <br><span style="color:#6a6d73 " id="Copyright">...</span> All Rights Reserved.
+                                  </div>
+                                  <!-- Copyright -->
+                            </footer>
 
+                          </div>
+                          <!-- End of .container -->
 
+                          <!-- Read in data as a script -->
 
+                          <script src="js/index.js"></script>
+                          <script>
 
-  
+                            // For dark mode.
+                            const btn = document.querySelector("#btn-toggle");
+                            btn.addEventListener("click", function () {
+                              // Toggle dark theme.
+                              dark = !dark;
 
-  <!-- Read in data as a script -->
+                              toggleNight();  // apply theme
+                              scrollFunction();
+                            })
 
-  <script src="js/index.js"></script>
-  <script>
+                            // When the user scrolls down 50px from the top of the document, reformat header.
+                            window.onscroll = function () {
+                              scrollFunction()
+                            };
+                            function scrollFunction() {
+                              if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 60) {
+                                if (dark) {
+                                  document.getElementById("header").style.borderBottom = "1px #000 solid";
+                                } else {
+                                  document.getElementById("header").style.borderBottom = "1px #DDD solid";
+                                }
+                              } else {
+                                if (dark) {
+                                  document.getElementById("header").style.borderBottom = "1px #242526 solid";
+                                } else {
+                                  document.getElementById("header").style.borderBottom = "1px #FCFCFC solid";
+                                }
+                              }
+                            }
+                            scrollFunction();  // initialize
 
-    // For dark mode.
-    const btn = document.querySelector("#btn-toggle");
-    btn.addEventListener("click", function () {
-      // Toggle dark theme.
-      dark = !dark;
-    
-      toggleNight();  // apply theme
-      scrollFunction();
-    })
-    
-    // When the user scrolls down 50px from the top of the document, reformat header.
-    window.onscroll = function() {
-      scrollFunction()
-    };
-    function scrollFunction() {
-      if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 60) {
-        if (dark) {
-          document.getElementById("header").style.borderBottom = "1px #000 solid";
-        } else {
-          document.getElementById("header").style.borderBottom = "1px #DDD solid";
-        }
-      } else {
-        if (dark) {
-          document.getElementById("header").style.borderBottom = "1px #242526 solid";
-        } else {
-          document.getElementById("header").style.borderBottom = "1px #FCFCFC solid";
-        }
-      }
-    }
-    scrollFunction();  // initialize
-    
-    </script>
+                          </script>
 
 </body>
 
