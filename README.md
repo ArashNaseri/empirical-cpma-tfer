@@ -61,20 +61,8 @@ This code should be cited by:
 
 #### References
 
-[Sipkens, T. A., J. S. Olfert, and S. N. Rogak. 2020a. New approaches to calculate the transfer function of particle mass analyzers. *Aerosol Sci. Technol.* 54:1, 111-127. DOI: 10.1080/02786826.2019.1680794.][Sipkens]
+[Sipkens, T. A., J. S. Olfert, and S. N. Rogak. 2020a. New approaches to calculate the transfer function of particle mass analyzers. *Aerosol Sci. Technol.* 54:1, 111-127. DOI: 10.1080/02786826.2019.1680794.](https://doi.org/10.1080/02786826.2019.1680794)
 
-[A. Naseri. ArashNaseri/empirical-cpma-tfer: empirical-cpma- tfer_v2.0.0, Feb. 2023. URL https://doi.org/10.5281/zenodo.7686025][Naseri1]
+[A. Naseri. ArashNaseri/empirical-cpma-tfer: empirical-cpma- tfer_v2.0.0, Feb. 2023.](https://doi.org/10.5281/zenodo.7686025)
 
-[Naseri, A., Johnson.T, Smallwood .G , and J. S. Olfert. 2023. Measurement of the centrifugal particle mass analyzer
-transfer function. *Aerosol Sci. Technol.*(Under review).][Naseri]
-
-
-
-
-[Sipkens]: Sipkens, T. A., J. S. Olfert, and S. N. Rogak. 2020a. New approaches to calculate the transfer function of particle mass analyzers. *Aerosol Sci. Technol.* 54:1, 111-127. DOI: 10.1080/02786826.2019.1680794.
-
-[Naseri1]: A. Naseri. ArashNaseri/empirical-cpma-tfer: empirical-cpma- tfer_v2.0.0, Feb. 2023. URL https://doi.org/10.5281/zenodo.7686025
-
-[Naseri]: Naseri, A., Johnson.T, Smallwood .G , and J. S. Olfert. 2023. Measurement of the centrifugal particle mass analyzer
-transfer function. *Aerosol Sci. Technol.*(Under review).
-
+[Naseri, A., Johnson, T., Smallwood, G., & Olfert, J. S. (2023). Measurement of the centrifugal particle mass analyzer transfer function. *Aerosol Science and Technology*. DOI: 10.1080/02786826.2023.2036489.](https://doi.org/10.1080/02786826.2023.2036489)
