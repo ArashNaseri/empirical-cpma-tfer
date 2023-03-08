@@ -49,15 +49,16 @@ The empirical CPMA transfer function is derived by incorporating width and heigh
 This software is licensed under an MIT license (see the corresponding file or details).
 
 #### Contact
-This program was authored by Arash Naseri (arash@ualberta.ca) during his postdoctoral fellowship at the University of Alberta. In order to make comprehensive comparisons between the empirical CPMA transfer functions and the existing models in the literature, the program also employs the trapezoidal and diffusion models developed in Sipkens et al.'s (2020) study. The visualization of the diffusion and trapezoidal models used in this program has been adapted from the GitHub repository located at https://github.com/tsipkens/tfer-pma.
+This program was authored by Arash Naseri (arash@ualberta.ca) during his postdoctoral fellowship at the University of Alberta. In order to make comprehensive comparisons between the empirical CPMA transfer functions and the existing models in the literature, the program also employs the trapezoidal and diffusion models developed in [Sipkens et al.'s (2020)](https://doi.org/10.1080/02786826.2019.1680794) study. The visualization of the diffusion and trapezoidal models used in this program has been adapted from the GitHub repository located at https://github.com/tsipkens/tfer-pma.
 
 #### How to cite
 
 This code should be cited by:
 
-1. citing the associated journal article describing the particle tracking methods used in this program [(Naseri et al., 2023)][Naseri], and
+1. citing the associated journal article used in this program ([Naseri et al., 2023](https://Under Review)), and
 
-2. optionally citing the code directly (making reference to [Naseri et al. 2023][Naseri1]).
+2. optionally citing the code directly (making reference to [Naseri et al. 2023](https://doi.org/10.5281/zenodo.7686025)).
+
 
 #### References
 
@@ -65,4 +66,4 @@ This code should be cited by:
 
 [A. Naseri. ArashNaseri/empirical-cpma-tfer: empirical-cpma- tfer_v2.0.0, Feb. 2023.](https://doi.org/10.5281/zenodo.7686025)
 
-[Naseri, A., Johnson, T., Smallwood, G., & Olfert, J. S. (2023). Measurement of the centrifugal particle mass analyzer transfer function. *Aerosol Science and Technology*. DOI: 10.1080/02786826.2023.2036489.](https://doi.org/10.1080/02786826.2023.2036489)
+[Naseri, A., Johnson, T., Smallwood, G., & Olfert, J. S. (2023). Measurement of the centrifugal particle mass analyzer transfer function. *Aerosol Science and Technology*. (Under Review).](https://)
