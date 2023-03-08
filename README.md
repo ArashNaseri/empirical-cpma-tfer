@@ -51,9 +51,6 @@ This software is licensed under an MIT license (see the corresponding file or de
 #### Contact
 This program was authored by Arash Naseri (arash@ualberta.ca) during his postdoctoral fellowship at the University of Alberta. In order to make comprehensive comparisons between the empirical CPMA transfer functions and the existing models in the literature, the program also employs the trapezoidal and diffusion models developed in Sipkens et al.'s (2020) study. The visualization of the diffusion and trapezoidal models used in this program has been adapted from the GitHub repository located at https://github.com/tsipkens/tfer-pma.
 
-
-This program was written by Arash Naseri ([arash@ualberta.ca](mailto:arash@ualberta.ca)) while doing postdoctoral fellow at the University of Alberta. To make general comparison among the emperical CPMA transfer fucntions with all the existing models in the lireture, trapezoidal and diffusion models that have been developed in [Sipkens et al.'s (2020)][Sipkens] study is also employed in this program. The diffusion and trapezoidal models utilized for visualized in this program is addapted from GitHub repository at https://github.com/tsipkens/tfer-pma.
-
 #### How to cite
 
 This code should be cited by:
@@ -64,8 +61,8 @@ This code should be cited by:
 
 #### References
 
-[Sipkens, T. A., J. S. Olfert, and S. N. Rogak. 2020a. New approaches to calculate the transfer function of particle mass analyzers. *Aerosol Sci. Technol.* 54:1, 111-127. DOI: 10.1080/02786826.2019.1680794.][Sipkens]
-[A. Naseri. ArashNaseri/empirical-cpma-tfer: empirical-cpma- tfer_v2.0.0, Feb. 2023. URL https://doi.org/10.5281/zenodo.7686025][Naseri1]
-[Naseri, A., Johnson.T, Smallwood .G , and J. S. Olfert. 2023. Measurement of the centrifugal particle mass analyzer
-transfer function. *Aerosol Sci. Technol.*(Under review).][Naseri]
+[Sipkens]: [Sipkens, T. A., J. S. Olfert, and S. N. Rogak. 2020a. New approaches to calculate the transfer function of particle mass analyzers. *Aerosol Sci. Technol.* 54:1, 111-127. DOI: 10.1080/02786826.2019.1680794.]
+[Naseri1]: [A. Naseri. ArashNaseri/empirical-cpma-tfer: empirical-cpma- tfer_v2.0.0, Feb. 2023. URL https://doi.org/10.5281/zenodo.7686025]
+[Naseri]: [Naseri, A., Johnson.T, Smallwood .G , and J. S. Olfert. 2023. Measurement of the centrifugal particle mass analyzer
+transfer function. *Aerosol Sci. Technol.*(Under review).]
 
