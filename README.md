@@ -57,7 +57,8 @@ This code should be cited by:
 
 1. citing the associated journal article used in this program ([Naseri et al., 2023](https://UnderReview)), and
 
-2. optionally citing the code directly (making reference to [Naseri et al. 2023](https://doi.org/10.5281/zenodo.7686025)).
+2. optionally citing the code directly (making reference to [Naseri et al. 2023] ([![DOI](https://zenodo.org/badge/585446654.svg)](https://zenodo.org/badge/latestdoi/585446654))
+<!-- 3. (https://doi.org/10.5281/zenodo.7686025)). -->
 
 
 #### References
