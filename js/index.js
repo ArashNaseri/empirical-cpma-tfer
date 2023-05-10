@@ -1,10 +1,10 @@
-const date = new Date();
-var copyright_date = date.getFullYear();
+const date = new Date()
+var copyright_date = date.getFullYear()
 
-$("#Copyright").html("© " + String(copyright_date) + " Copyright.");
+$("#Copyright").html("© " + String(copyright_date)+" Copyright.")
 
 // Define color scheme.
-var colors = ["#FC8B5E", "#219ebc", "#023047", "#EA592A"]; // new
+var colors = [ "#FC8B5E", "#219ebc", "#023047","#EA592A"]; // new
 
 var m_star = Number($("#input1").val()) * 1e-18;
 var Rm = Number($("#input2").val());
@@ -290,7 +290,10 @@ var yMax = 1,
   yMin = 0;
 
 var y = d3.scaleLinear().domain([yMin, yMax]).range([height, 0]);
-var yAxis = svg.append("g").attr("class", "axis").call(d3.axisLeft(y).ticks(6));
+var yAxis = svg
+.append("g")
+.attr("class", "axis")
+.call(d3.axisLeft(y).ticks(6));
 
 var yAxis2 = svg
   .append("g")
@@ -415,6 +418,7 @@ $("#omegahnum").val(Math.round(prop["omega_hat"] * 1e5) / 1e5);
 
 // Update mass setpoint
 $("#input1").on("change", function () {
+ 
   switch ($("#setpoint-mode option:selected").text()) {
     case " Mass + Resolution + flow rate":
       sp_var1 = "m_star";
@@ -424,7 +428,7 @@ $("#input1").on("change", function () {
     case "Angular speed + Voltage + flow rate":
       sp_var1 = "omega";
       sp_var2 = "V";
-      // alert($("#setpoint-mode option:selected").text());
+      alert($("#setpoint-mode option:selected").text())
       refreshData(this.value, Number($("#input2").val()), prop);
       break;
   }
@@ -451,7 +455,7 @@ $("#input2").on("change", function () {
   // m_star = sp[sp_var1]
 
   // refreshData(m_star, Rm, prop)
-
+  
   switch ($("#setpoint-mode option:selected").text()) {
     case " Mass + Resolution + flow rate":
       sp_var1 = "m_star";
@@ -558,6 +562,7 @@ $("#setpoint-mode").on("change", function () {
 });
 
 //----------------------------------End-------------------------------------------//
+
 //--------------------------- data refresher function -------------------------------//
 
 function refreshData(m_star, Rm, prop) {
@@ -569,8 +574,8 @@ function refreshData(m_star, Rm, prop) {
   // var m_star = Number($("#input1").val())*1e-18;
   // var Rm = Number($("#input2").val());
   // var Q = Number($("#input3").val());
-  // alert(sp_var1+':'+m_star)
-  // alert(sp_var2+':'+Rm)
+// alert(sp_var1+':'+m_star)
+// alert(sp_var2+':'+Rm)
   __left0__ = get_setpoint(prop, sp_var1, m_star, sp_var2, Rm);
   sp = __left0__[0];
 
@@ -598,6 +603,7 @@ function refreshData(m_star, Rm, prop) {
     });
   }
 
+
   switch (true) {
     case Q < 0.3 || Q > 8:
       mu = [0, 0];
@@ -605,13 +611,17 @@ function refreshData(m_star, Rm, prop) {
       break;
 
     default:
+
       var mu = fWidth(sp["m_star"] * 1e18, sp["Rm"], Q);
+
   }
 
   Q = prop["Q"] * 60000;
 
   switch (true) {
     case Q == 0.3 || Q == 1.5 || Q == 4 || Q == 8:
+
+
       var lambda = fLoss(sp["m_star"] * 1e18, sp["Rm"], Q);
 
       break;
@@ -632,6 +642,7 @@ function refreshData(m_star, Rm, prop) {
       break;
 
     case Q > 1.5 && Q < 4:
+
       var lambda15 = fLoss(sp["m_star"] * 1e18, sp["Rm"], 1.5);
       var lambda4 = fLoss(sp["m_star"] * 1e18, sp["Rm"], 4);
       lambda = linearInterp(
@@ -643,6 +654,7 @@ function refreshData(m_star, Rm, prop) {
       break;
 
     case Q > 4 && Q < 8:
+
       var lambda4 = fLoss(sp["m_star"] * 1e18, sp["Rm"], 0.3);
       var lambda8 = fLoss(sp["m_star"] * 1e18, sp["Rm"], 1.5);
       lambda = linearInterp(
@@ -663,11 +675,11 @@ function refreshData(m_star, Rm, prop) {
   var Omega_CPMA = tri_tfer(Rm, mu, lambda, m_star * 1e18, mp);
   $("#Omega_CPMA").html(Omega_CPMA.toFixed(2));
 
-  var [mTilde, IdealOmega] = tri_tfer_plot(sp["Rm"], 1, 1);
-  var [mTilde, nonIdealOmega] = tri_tfer_plot(
-    sp["Rm"],
-    0.5 * (mu[0] + mu[1]),
-    0.5 * (lambda[0] + lambda[1])
+
+
+  var [mTilde, nonIdealOmega] = tri_tfer_plot(sp["Rm"],
+                                              0.5 * (mu[0] + mu[1]),
+                                              0.5 * (lambda[0] + lambda[1])
   );
 
   var dataTri = [];
@@ -769,7 +781,7 @@ function refreshPlot(dataTri, data1C) {
     .call(d3.axisLeft(y).ticks(5));
   var yAxis2 = svg
     .append("g")
-    .attr("transform", "translate(" + width + ",0)")
+    .attr("transform", "translate(" + width + ",0)") 
     .attr("class", "axis")
     .call(d3.axisRight(y).ticks(5));
 
